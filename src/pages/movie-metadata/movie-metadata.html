@@ -1,0 +1,83 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Movie Metadata</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ng-container *ngIf="idPickerIsVisible">
+        Selected TMDB ID {{tmdbId}}
+        <ion-label color="primary">Inline Label</ion-label>
+        <ion-input placeholder="Text Input" [(ngModel)]="searchText"></ion-input>
+        <button ion-button (click)="search()">Search</button>
+        <ng-container *ngIf="searchResults">
+            <i *ngIf="searchResults.length === 0">
+                No results found
+            </i>
+            <ion-card *ngFor="let result of searchResults">
+                <ion-card-content>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col col-2>
+                                <img [src]="result.posterUrl" />
+                            </ion-col>
+                            <ion-col>
+                                <div>
+                                    <h1 class="inline-block">{{result.title}}
+                                        <i>({{result.releaseDate|date:"y"}})</i>
+                                        <a href="https://www.themoviedb.org/movie/{{result.tmdbId}}" target="_blank">
+                                            <ion-badge class="v-center">
+                                                <ion-icon name="link"></ion-icon>
+                                                TMDB
+                                            </ion-badge>
+                                        </a>
+                                    </h1>
+                                </div>
+                                {{result.overview}}
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <div class="text-center">
+                        <button ion-button (click)="tmdbId=result.tmdbId">Use this movie</button>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </ng-container>
+    </ng-container>
+    <ng-container *ngIf="comparisonEditorIsVisible">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <h1 class="text-center">Incoming Metadata</h1>
+                </ion-col>
+                <ion-col>
+                    <h1 class="text-center"> Current Metadata</h1>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-grid>
+            <ion-row *ngFor="let prop of simpleProperties">
+                <ion-col>
+                    <ion-item>
+                        <ion-label>{{prop}}</ion-label>
+                        <ion-input disabled [(ngModel)]="comparison.tmdb[prop]"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col col-1 class="text-center">
+                    <button tabindex="-1" ion-button (click)="comparison.current[prop] = comparison.tmdb[prop]">
+                        <ion-icon name="arrow-round-forward"></ion-icon>
+                    </button>
+                </ion-col>
+                <ion-col>
+                    <ion-item>
+                        <ion-label>{{prop}}</ion-label>
+                        <ion-input [(ngModel)]="comparison.current[prop]"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ng-container>
+</ion-content>

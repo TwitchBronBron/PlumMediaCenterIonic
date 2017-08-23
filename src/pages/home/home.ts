@@ -15,6 +15,8 @@ export class HomePage {
   ) {
     api.movies.getAll().then((movies) => {
       this.movies = movies;
+    }, (err) => {
+
     });
   }
   public movies: Movie[];

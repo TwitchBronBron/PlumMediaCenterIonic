@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Movie Info</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf="movie">
+  <img class="backdrop" [src]="movie.backdropUrl" />
+  <h1>{{movie.title}}</h1>
+  <button [movieMetadataClick]="movie">Manage Metadata</button>
+</ion-content>

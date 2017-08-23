@@ -9,20 +9,31 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-//components
 import { MovieCardComponent } from '../components/movie-card/movie-card';
-
-//providers
 import { Api } from '../providers/api';
 import { Http2Factory } from '../providers/http2-factory';
 import { HttpModule } from '@angular/http';
+import { MovieInfoClick } from '../directives/movie-info-click';
+import { MovieInfoPage } from '../pages/movie-info/movie-info';
+import { MovieMetadataPage } from '../pages/movie-metadata/movie-metadata';
+import { MovieMetadataClick } from '../directives/movie-metadata-click';
 
 @NgModule({
   declarations: [
     MyApp,
+
+    //pages
     HomePage,
     ListPage,
-    MovieCardComponent
+    MovieInfoPage,
+    MovieMetadataPage,
+
+    //components
+    MovieCardComponent,
+
+    //directives
+    MovieInfoClick,
+    MovieMetadataClick
   ],
   imports: [
     BrowserModule,
@@ -33,7 +44,9 @@ import { HttpModule } from '@angular/http';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    MovieInfoPage,
+    MovieMetadataPage
   ],
   providers: [
     Api,

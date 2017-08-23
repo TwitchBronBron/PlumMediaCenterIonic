@@ -8,5 +8,5 @@
 </ion-header>
 
 <ion-content padding>
-  <movie-card *ngFor="let movie of movies" [movie]="movie"></movie-card>
+  <movie-card *ngFor="let movie of movies" [movie]="movie" [movieInfoClick]="movie"></movie-card>
 </ion-content>
