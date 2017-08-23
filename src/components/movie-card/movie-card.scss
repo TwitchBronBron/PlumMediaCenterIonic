@@ -1,0 +1,55 @@
+movie-card {
+    border: 1px solid grey;
+    display: inline-block;
+    padding: 0px;
+    margin: 5px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+movie-card {
+    img {
+        width: 100%;
+        border: 0px;
+    }
+}
+
+
+/* extra small devices (less than 768px)*/
+
+@media (max-width:767px) {
+    movie-card {
+        width: 100px;
+        height: 150px;
+    }
+}
+
+
+/* Small devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {
+    movie-card {
+        width: 134px;
+        height: 201px;
+    }
+}
+
+
+/* Medium devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+    movie-card {
+        width: 172px;
+        height: 258px;
+    }
+}
+
+
+/* Large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1200px) {
+    movie-card {
+        width: 208px;
+        height: 312px;
+    }
+}
