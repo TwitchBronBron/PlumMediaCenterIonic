@@ -9,14 +9,10 @@ export class ImageListComponent {
     constructor() {
     }
     @Input()
-    public set urls(value) {
-        console.log(value);
-        this._urls = value;
-    }
-    public get urls() {
-        return this._urls;
-    }
-    private _urls: string[];
+    public urls: string[];
+
+    @Input()
+    public comparisonUrls: string;
 
     @Input()
     public buttonType: 'add' | 'remove';
@@ -46,5 +42,13 @@ export class ImageListComponent {
             }
         }
         this.urls.splice(newIndex, 0, this.urls.splice(idx, 1)[0]);
+    }
+
+    /**
+     * An individual image is disabled when comparisonUrls is set, and this url is used in the comparison list
+     * @param url 
+     */
+    public isDisabled(url: string) {
+        return this.comparisonUrls && this.comparisonUrls.indexOf(url) > -1;
     }
 }

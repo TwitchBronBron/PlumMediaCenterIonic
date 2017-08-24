@@ -10,4 +10,5 @@
     <button class="right-button" *ngIf="allowReorder" (click)="reorder(url, true)">
         <ion-icon name="arrow-forward"></ion-icon>
     </button>
+    <div class="disabled-cover" *ngIf="isDisabled(url)"></div>
 </div>

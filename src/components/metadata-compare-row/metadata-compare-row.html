@@ -7,7 +7,7 @@
                 <p *ngIf="type ==='text' || type === 'textarea'">
                     {{comparison.incoming[property]}}
                 </p>
-                <image-list *ngIf="type === 'imagelist'" [urls]="comparison.incoming[property]" buttonType="add" (buttonClick)="addImageUrl(property, $event)"></image-list>
+                <image-list *ngIf="type === 'imagelist'" [urls]="comparison.incoming[property]" [comparisonUrls]="comparison.current[property]" buttonType="add" (buttonClick)="addImageUrl(property, $event)"></image-list>
             </div>
         </ion-item>
     </ion-col>
