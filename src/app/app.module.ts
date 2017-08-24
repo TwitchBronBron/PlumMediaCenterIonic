@@ -20,6 +20,7 @@ import { MovieMetadataClick } from '../directives/movie-metadata-click';
 import { MetadataCompareRowComponent } from '../components/metadata-compare-row/metadata-compare-row';
 import { ImageListComponent } from '../components/image-list/image-list';
 import { ProperCaseSpacePipe } from '../pipes/proper-case-space-pipe';
+import { StringListComponent } from '../components/string-list/string-list';
 
 @NgModule({
     declarations: [
@@ -35,6 +36,7 @@ import { ProperCaseSpacePipe } from '../pipes/proper-case-space-pipe';
         MovieCardComponent,
         MetadataCompareRowComponent,
         ImageListComponent,
+        StringListComponent,
 
         //directives
         MovieInfoClick,

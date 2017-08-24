@@ -46,6 +46,10 @@ h1,
     color: white;
 }
 
+img.backdrop-card {
+    max-width: inherit;
+}
+
 
 /* extra small devices (less than 768px)*/
 
@@ -53,6 +57,10 @@ h1,
     .poster {
         width: 100px;
         height: 150px;
+    }
+    .backdrop-card {
+        width: 272px;
+        height: 153px;
     }
 }
 
@@ -64,6 +72,10 @@ h1,
         width: 134px;
         height: 201px;
     }
+    .backdrop-card {
+        width: 368px;
+        height: 207px;
+    }
 }
 
 
@@ -74,6 +86,10 @@ h1,
         width: 172px;
         height: 258px;
     }
+    .backdrop-card {
+        width: 464px;
+        height: 261px;
+    }
 }
 
 
@@ -83,5 +99,9 @@ h1,
     .poster {
         width: 208px;
         height: 312px;
+    }
+    .backdrop-card {
+        width: 560px;
+        height: 315px;
     }
 }

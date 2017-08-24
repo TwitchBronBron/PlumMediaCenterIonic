@@ -20,8 +20,12 @@ export class ImageListComponent {
     @Input()
     public allowReorder: boolean;
 
+    @Input()
+    public imageType: 'poster' | 'backdrop';
+
     @Output()
     public buttonClick = new EventEmitter<string>();
+
 
     public addRemoveClick(url: string) {
         this.buttonClick.emit(url);
