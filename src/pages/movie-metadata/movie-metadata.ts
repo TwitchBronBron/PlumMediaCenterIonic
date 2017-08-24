@@ -17,15 +17,29 @@ export class MovieMetadataPage {
         public loadingCtrl: LoadingController
     ) {
         this.init();
-
     }
+
+    public async init() {
+        var movieId = this.navParams.data.movieId;
+        //movieId = 3;
+        this.movie = await this.api.movies.getById(movieId);
+        this.tmdbId = this.movie.tmdbId;
+        this.searchText = this.movie.title;
+        if (!this.tmdbId) {
+            //auto-search by title
+            this.search();
+        }
+    }
+
     public movie: Movie;
     /**
      * The tmdb id that will be used to search for metadata. Id from movie is used if available
      */
     public set tmdbId(value) {
         this._tmdbId = value;
-        this.loadComparison();
+        if (this._tmdbId) {
+            this.loadComparison();
+        }
     };
     public get tmdbId() {
         return this._tmdbId;
@@ -71,17 +85,6 @@ export class MovieMetadataPage {
     }
 
 
-    public async init() {
-        //var movieId = this.navParams.data.movieId;
-        var movieId = 3;
-        this.movie = await this.api.movies.getById(movieId);
-        this.tmdbId = this.movie.tmdbId;
-        this.searchText = this.movie.title;
-        if (!this.tmdbId) {
-            //auto-search by title
-            this.search();
-        }
-    }
 
     public async search() {
         this.searchResults = null;

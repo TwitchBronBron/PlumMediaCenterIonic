@@ -51,15 +51,14 @@
         <ion-grid>
             <ion-row>
                 <ion-col>
-                    <h1  text-center>Incoming Metadata</h1>
+                    <h1 text-center>Incoming Metadata</h1>
                 </ion-col>
                 <ion-col>
-                    <h1  text-center> Current Metadata</h1>
+                    <h1 text-center> Current Metadata</h1>
                 </ion-col>
             </ion-row>
         </ion-grid>
         <ion-grid>
-            <metadata-compare-row [comparison]="comparison" property="keywords" type="stringlist"></metadata-compare-row>
             <metadata-compare-row [comparison]="comparison" property="title" type="text"></metadata-compare-row>
             <metadata-compare-row [comparison]="comparison" property="summary" type="textarea"></metadata-compare-row>
             <metadata-compare-row [comparison]="comparison" property="description" type="textarea"></metadata-compare-row>
@@ -69,6 +68,7 @@
             <metadata-compare-row [comparison]="comparison" property="releaseDate" type="date"></metadata-compare-row>
             <metadata-compare-row [comparison]="comparison" property="runtime" type="text"></metadata-compare-row>
             <metadata-compare-row [comparison]="comparison" property="genres" type="stringlist"></metadata-compare-row>
+            <metadata-compare-row [comparison]="comparison" property="keywords" type="stringlist"></metadata-compare-row>
             <metadata-compare-row [comparison]="comparison" property="backdropUrls" type="imagelist"></metadata-compare-row>
             <metadata-compare-row [comparison]="comparison" property="posterUrls" type="imagelist"></metadata-compare-row>
         </ion-grid>

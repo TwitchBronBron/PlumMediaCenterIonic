@@ -21,12 +21,14 @@ import { MetadataCompareRowComponent } from '../components/metadata-compare-row/
 import { ImageListComponent } from '../components/image-list/image-list';
 import { ProperCaseSpacePipe } from '../pipes/proper-case-space-pipe';
 import { StringListComponent } from '../components/string-list/string-list';
+import { AdminPage } from '../pages/admin/admin';
 
 @NgModule({
     declarations: [
         MyApp,
 
         //pages
+        AdminPage,
         HomePage,
         ListPage,
         MovieInfoPage,
@@ -54,6 +56,7 @@ import { StringListComponent } from '../components/string-list/string-list';
     entryComponents: [
         MyApp,
         HomePage,
+        AdminPage,
         ListPage,
         MovieInfoPage,
         MovieMetadataPage
