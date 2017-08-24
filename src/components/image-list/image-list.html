@@ -1,3 +1,13 @@
-<ng-container *ngFor="let url of urls; index as i;">
-    {{i}}<img class="poster" [src]="url" />
-</ng-container>
+<div class="image-container" *ngFor="let url of urls; index as i;">
+    <img class="poster" [src]="url" />
+
+    <button color="{{buttonType === 'add'?'secondary': 'danger'}}" ion-button class="add-remove-button" (click)="addRemoveClick(url)">
+        <ion-icon name="{{buttonType === 'add'?'add': 'remove'}}"></ion-icon>
+    </button>
+    <button class="left-button" *ngIf="allowReorder" (click)="reorder(url, false)">
+        <ion-icon name="arrow-back"></ion-icon>
+    </button>
+    <button class="right-button" *ngIf="allowReorder" (click)="reorder(url, true)">
+        <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+</div>

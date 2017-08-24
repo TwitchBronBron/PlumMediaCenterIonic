@@ -2,17 +2,17 @@
     <ion-col>
         <ion-item class="full-height">
             <ion-label stacked>{{property|properCaseSpace}}</ion-label>
-            <div item-content class="text-left full-width text-white">
+            <div item-content class="full-width text-white">
                 <ion-datetime *ngIf="type == 'date'" disabled displayFormat="MM/DD/YYYY" [(ngModel)]="comparison.incoming[property]"></ion-datetime>
                 <p *ngIf="type ==='text' || type === 'textarea'">
                     {{comparison.incoming[property]}}
                 </p>
-                <image-list *ngIf="type === 'imagelist'" [urls]="comparison.incoming[property]"></image-list>
+                <image-list *ngIf="type === 'imagelist'" [urls]="comparison.incoming[property]" buttonType="add" (buttonClick)="addImageUrl(property, $event)"></image-list>
             </div>
         </ion-item>
     </ion-col>
-    <ion-col col-1 class="text-center">
-        <button tabindex="-1" ion-button (click)="comparison.current[property] = comparison.incoming[property]">
+    <ion-col col-1 text-center>
+        <button tabindex="-1" ion-button (click)="comparison.current[property] = comparison.incoming[property].slice()">
             <ion-icon name="arrow-round-forward"></ion-icon>
         </button>
     </ion-col>
@@ -22,7 +22,7 @@
             <ion-datetime *ngIf="type == 'date'" displayFormat="MM/DD/YYYY" [(ngModel)]="comparison.current[property]"></ion-datetime>
             <ion-input *ngIf="type =='text'" [(ngModel)]="comparison.current[property]"></ion-input>
             <ion-textarea *ngIf="type =='textarea'" [(ngModel)]="comparison.current[property]"></ion-textarea>
-            <image-list item-content *ngIf="type === 'imagelist'" [urls]="comparison.current[property]"></image-list>
+            <image-list item-content *ngIf="type === 'imagelist'" [urls]="comparison.current[property]" buttonType="remove" [allowReorder]="true" (buttonClick)="removeImageUrl(property, $event)"></image-list>
         </ion-item>
     </ion-col>
 </ion-row>
