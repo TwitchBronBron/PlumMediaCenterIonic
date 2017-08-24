@@ -1,1 +1,9 @@
-metadata-compare-row {}
+metadata-compare-row {
+    .datetime-disabled {
+        opacity: 1;
+    }
+    ion-textarea,
+    textarea {
+        height: 100%;
+    }
+}

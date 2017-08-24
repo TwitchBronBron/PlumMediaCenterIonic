@@ -16,8 +16,24 @@
     display: inline-block;
 }
 
+.text-left {
+    text-align: left;
+}
+
 .text-center {
     text-align: center;
+}
+
+.text-white {
+    color: white;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
 }
 
 .v-center {
@@ -25,6 +41,50 @@
 }
 
 h1,
-[class*="card-"] h1 {
+.card-md h1 {
     color: white;
+}
+
+.item-md p {
+    color: white;
+}
+
+
+/* extra small devices (less than 768px)*/
+
+@media (max-width:767px) {
+    .poster {
+        width: 100px;
+        height: 150px;
+    }
+}
+
+
+/* Small devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {
+    .poster {
+        width: 134px;
+        height: 201px;
+    }
+}
+
+
+/* Medium devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+    .poster {
+        width: 172px;
+        height: 258px;
+    }
+}
+
+
+/* Large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1200px) {
+    .poster {
+        width: 208px;
+        height: 312px;
+    }
 }

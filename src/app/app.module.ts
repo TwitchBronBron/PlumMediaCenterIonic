@@ -18,44 +18,50 @@ import { MovieInfoPage } from '../pages/movie-info/movie-info';
 import { MovieMetadataPage } from '../pages/movie-metadata/movie-metadata';
 import { MovieMetadataClick } from '../directives/movie-metadata-click';
 import { MetadataCompareRowComponent } from '../components/metadata-compare-row/metadata-compare-row';
+import { ImageListComponent } from '../components/image-list/image-list';
+import { ProperCaseSpacePipe } from '../pipes/proper-case-space-pipe';
 
 @NgModule({
-  declarations: [
-    MyApp,
+    declarations: [
+        MyApp,
 
-    //pages
-    HomePage,
-    ListPage,
-    MovieInfoPage,
-    MovieMetadataPage,
+        //pages
+        HomePage,
+        ListPage,
+        MovieInfoPage,
+        MovieMetadataPage,
 
-    //components
-    MovieCardComponent,
-    MetadataCompareRowComponent,
+        //components
+        MovieCardComponent,
+        MetadataCompareRowComponent,
+        ImageListComponent,
 
-    //directives
-    MovieInfoClick,
-    MovieMetadataClick
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,
-    IonicModule.forRoot(MyApp),
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    HomePage,
-    ListPage,
-    MovieInfoPage,
-    MovieMetadataPage
-  ],
-  providers: [
-    Api,
-    Http2Factory,
-    StatusBar,
-    SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
-  ]
+        //directives
+        MovieInfoClick,
+        MovieMetadataClick,
+
+        //pipes
+        ProperCaseSpacePipe
+    ],
+    imports: [
+        BrowserModule,
+        HttpModule,
+        IonicModule.forRoot(MyApp),
+    ],
+    bootstrap: [IonicApp],
+    entryComponents: [
+        MyApp,
+        HomePage,
+        ListPage,
+        MovieInfoPage,
+        MovieMetadataPage
+    ],
+    providers: [
+        Api,
+        Http2Factory,
+        StatusBar,
+        SplashScreen,
+        { provide: ErrorHandler, useClass: IonicErrorHandler }
+    ]
 })
 export class AppModule { }

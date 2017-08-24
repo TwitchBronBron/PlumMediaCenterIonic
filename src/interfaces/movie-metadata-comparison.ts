@@ -1,5 +1,5 @@
 export interface MovieMetadataComparison {
-    tmdb: MovieMetadata;
+    incoming: MovieMetadata;
     current: MovieMetadata;
 }
 export interface MovieMetadata {
