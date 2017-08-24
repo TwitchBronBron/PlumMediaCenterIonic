@@ -42,14 +42,19 @@ export class MetadataCompareRowComponent {
     }
 
     public addStringItem(propertyName, item) {
-        this.comparison.current[propertyName].push(item);
-        this.sortStringLists();
+        var list = (this.comparison.current[propertyName] as string[]);
+        if (list.indexOf(item) === -1) {
+            this.comparison.current[propertyName].push(item);
+            this.sortStringLists();
+        }
     }
 
     public removeStringItem(propertyName, item) {
         var list = (this.comparison.current[propertyName] as string[]);
-        list.splice(list.indexOf(item), 1);
-        this.sortStringLists();
+        if (list.indexOf(item) > -1) {
+            list.splice(list.indexOf(item), 1);
+            this.sortStringLists();
+        }
     }
 
     private sortStringLists() {

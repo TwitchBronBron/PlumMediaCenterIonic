@@ -12,7 +12,7 @@ export class StringListComponent {
     public items: string[];
 
     @Input()
-    public comparisonItems: string;
+    public comparisonItems: string[];
 
     @Input()
     public buttonType: 'add' | 'remove';
@@ -21,5 +21,9 @@ export class StringListComponent {
 
     public click(url: string) {
         this.buttonClick.emit(url);
+    }
+
+    public isInUse(value: string) {
+        return this.comparisonItems && this.comparisonItems.indexOf(value) > -1;
     }
 }

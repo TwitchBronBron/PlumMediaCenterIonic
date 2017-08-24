@@ -16,6 +16,10 @@
     display: inline-block;
 }
 
+.relative {
+    position: relative;
+}
+
 .text-white {
     color: white;
 }
@@ -59,8 +63,8 @@ img.backdrop-card {
         height: 150px;
     }
     .backdrop-card {
-        width: 272px;
-        height: 153px;
+        width: 151px;
+        height: 84px;
     }
 }
 
@@ -73,8 +77,8 @@ img.backdrop-card {
         height: 201px;
     }
     .backdrop-card {
-        width: 368px;
-        height: 207px;
+        width: 208px;
+        height: 117px;
     }
 }
 
@@ -87,8 +91,8 @@ img.backdrop-card {
         height: 258px;
     }
     .backdrop-card {
-        width: 464px;
-        height: 261px;
+        width: 263px;
+        height: 147px;
     }
 }
 
@@ -101,7 +105,7 @@ img.backdrop-card {
         height: 312px;
     }
     .backdrop-card {
-        width: 560px;
-        height: 315px;
+        width: 320px;
+        height: 180px;
     }
 }

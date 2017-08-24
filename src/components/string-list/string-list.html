@@ -1,8 +1,6 @@
-<ng-container *ngFor="let str of items">
-    <ion-badge class="inline-block">
-        {{str}}
-        <button (click)="click(str)">
-            <ion-icon name="{{buttonType}}"></ion-icon>
-        </button>
-    </ion-badge>
-</ng-container>
+<ion-badge class="inline-block" *ngFor="let str of items" [ngClass]="{'disabled': isInUse(str)}">
+    <button (click)="click(str)" *ngIf="!isInUse(str)">
+        <ion-icon name="{{buttonType}}"></ion-icon>
+    </button>
+    {{str}}
+</ion-badge>

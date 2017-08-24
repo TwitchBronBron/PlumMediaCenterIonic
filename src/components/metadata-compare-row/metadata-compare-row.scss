@@ -10,4 +10,8 @@ metadata-compare-row {
         width: 100%;
         height: 100%;
     }
+    ion-item.fill string-list.fill,
+    ion-item .incoming-container {
+        height: calc(100% - 30px);
+    }
 }

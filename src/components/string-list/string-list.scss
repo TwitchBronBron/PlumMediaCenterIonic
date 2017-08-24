@@ -1,6 +1,10 @@
 string-list {
-   ion-badge{
-       padding:10px;
-       margin:5px;
-   }
+    ion-badge {
+        padding: 10px;
+        margin: 5px;
+    }
+    ion-badge.disabled {
+        opacity: .2;
+        padding:13px;
+    }
 }
