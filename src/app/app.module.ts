@@ -17,6 +17,7 @@ import { MovieInfoClick } from '../directives/movie-info-click';
 import { MovieInfoPage } from '../pages/movie-info/movie-info';
 import { MovieMetadataPage } from '../pages/movie-metadata/movie-metadata';
 import { MovieMetadataClick } from '../directives/movie-metadata-click';
+import { MetadataCompareRowComponent } from '../components/metadata-compare-row/metadata-compare-row';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MovieMetadataClick } from '../directives/movie-metadata-click';
 
     //components
     MovieCardComponent,
+    MetadataCompareRowComponent,
 
     //directives
     MovieInfoClick,

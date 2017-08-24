@@ -59,25 +59,14 @@
             </ion-row>
         </ion-grid>
         <ion-grid>
-            <ion-row *ngFor="let prop of simpleProperties">
-                <ion-col>
-                    <ion-item>
-                        <ion-label>{{prop}}</ion-label>
-                        <ion-input disabled [(ngModel)]="comparison.tmdb[prop]"></ion-input>
-                    </ion-item>
-                </ion-col>
-                <ion-col col-1 class="text-center">
-                    <button tabindex="-1" ion-button (click)="comparison.current[prop] = comparison.tmdb[prop]">
-                        <ion-icon name="arrow-round-forward"></ion-icon>
-                    </button>
-                </ion-col>
-                <ion-col>
-                    <ion-item>
-                        <ion-label>{{prop}}</ion-label>
-                        <ion-input [(ngModel)]="comparison.current[prop]"></ion-input>
-                    </ion-item>
-                </ion-col>
-            </ion-row>
+            <metadata-compare-row [comparison]="comparison" property="title" type="text"></metadata-compare-row>
+            <metadata-compare-row [comparison]="comparison" property="summary" type="textarea"></metadata-compare-row>
+            <metadata-compare-row [comparison]="comparison" property="description" type="textarea"></metadata-compare-row>
+            <metadata-compare-row [comparison]="comparison" property="collection" type="text"></metadata-compare-row>
+            <metadata-compare-row [comparison]="comparison" property="collectionOrder" type="text"></metadata-compare-row>
+            <metadata-compare-row [comparison]="comparison" property="rating" type="text"></metadata-compare-row>
+            <metadata-compare-row [comparison]="comparison" property="releaseDate" type="date"></metadata-compare-row>
+            <metadata-compare-row [comparison]="comparison" property="runtime" type="text"></metadata-compare-row>
         </ion-grid>
     </ng-container>
 </ion-content>

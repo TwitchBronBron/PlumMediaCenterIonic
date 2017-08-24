@@ -1,0 +1,23 @@
+<ion-row>
+    <ion-col>
+        <ion-item>
+            <ion-label stacked>{{property}}</ion-label>
+            <ion-datetime *ngIf="type == 'date'" displayFormat="MM/DD/YYYY" [(ngModel)]="comparison.tmdb[property]"></ion-datetime>
+            <ion-input *ngIf="type ==='text'" [(ngModel)]="comparison.tmdb[property]"></ion-input>
+            <ion-textarea *ngIf="type ==='textarea'" [(ngModel)]="comparison.tmdb[property]"></ion-textarea>
+        </ion-item>
+    </ion-col>
+    <ion-col col-1 class="text-center">
+        <button tabindex="-1" ion-button (click)="comparison.current[property] = comparison.tmdb[property]">
+            <ion-icon name="arrow-round-forward"></ion-icon>
+        </button>
+    </ion-col>
+    <ion-col>
+        <ion-item>
+            <ion-label stacked>{{property}}</ion-label>
+            <ion-datetime *ngIf="type == 'date'" displayFormat="MM/DD/YYYY" [(ngModel)]="comparison.current[property]"></ion-datetime>
+            <ion-input *ngIf="type ==='text'" [(ngModel)]="comparison.current[property]"></ion-input>
+            <ion-textarea *ngIf="type ==='textarea'" [(ngModel)]="comparison.current[property]"></ion-textarea>
+        </ion-item>
+    </ion-col>
+</ion-row>
