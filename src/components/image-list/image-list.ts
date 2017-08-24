@@ -34,14 +34,12 @@ export class ImageListComponent {
      */
     public reorder(url: string, forward = true) {
         var idx = this.urls.indexOf(url);
-        var newIndex = idx + (forward ? 1 : -1);
-        if (newIndex >= this.urls.length) {
-            var k = newIndex - this.urls.length;
-            while ((k--) + 1) {
-                this.urls.push(undefined);
-            }
+        var newIdx = idx + (forward ? 1 : -1);
+        if (newIdx <= 0) {
+            newIdx = 0;
         }
-        this.urls.splice(newIndex, 0, this.urls.splice(idx, 1)[0]);
+        this.urls.splice(idx, 1);
+        this.urls.splice(newIdx, 0, url);
     }
 
     /**
