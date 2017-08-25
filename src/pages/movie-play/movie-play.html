@@ -1,0 +1,12 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Watch {{movie? movie.title: 'video'}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf="movie">
+    <videojs-video [url]="movie.videoUrl" [poster]="movie.backdropUrl"></videojs-video>
+</ion-content>

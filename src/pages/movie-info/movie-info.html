@@ -9,6 +9,9 @@
 
 <ion-content *ngIf="movie">
     <img class="backdrop" [src]="movie.backdropUrl" />
+    <div text-center>
+        <button ion-button [moviePlayClick]="movie">Play</button>
+    </div>
     <h1>{{movie.title}}</h1>
-    <button [movieMetadataClick]="movie">Manage Metadata</button>
+    <button ion-button [movieMetadataClick]="movie">Manage Metadata</button>
 </ion-content>

@@ -20,7 +20,7 @@ export class MyApp {
 
     constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
         this.initializeApp();
-        this.rootPage = AdminPage;
+        this.rootPage = HomePage;
         
         // used for an example of ngFor and navigation
         this.pages = [

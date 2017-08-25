@@ -22,6 +22,9 @@ import { ImageListComponent } from '../components/image-list/image-list';
 import { ProperCaseSpacePipe } from '../pipes/proper-case-space-pipe';
 import { StringListComponent } from '../components/string-list/string-list';
 import { AdminPage } from '../pages/admin/admin';
+import { MoviePlayPage } from '../pages/movie-play/movie-play';
+import { MoviePlayClick } from '../directives/movie-play-click';
+import { VideojsVideoComponent } from '../components/videojs-video/videojs-video';
 
 @NgModule({
     declarations: [
@@ -33,16 +36,19 @@ import { AdminPage } from '../pages/admin/admin';
         ListPage,
         MovieInfoPage,
         MovieMetadataPage,
+        MoviePlayPage,
 
         //components
         MovieCardComponent,
         MetadataCompareRowComponent,
         ImageListComponent,
         StringListComponent,
+        VideojsVideoComponent,
 
         //directives
         MovieInfoClick,
         MovieMetadataClick,
+        MoviePlayClick,
 
         //pipes
         ProperCaseSpacePipe
@@ -59,7 +65,8 @@ import { AdminPage } from '../pages/admin/admin';
         AdminPage,
         ListPage,
         MovieInfoPage,
-        MovieMetadataPage
+        MovieMetadataPage,
+        MoviePlayPage
     ],
     providers: [
         Api,
