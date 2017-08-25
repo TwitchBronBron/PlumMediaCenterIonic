@@ -54,6 +54,30 @@ img.backdrop-card {
     max-width: inherit;
 }
 
+$spinner-color: white;
+
+ion-spinner {
+    * {
+        stroke: $spinner-color;
+    }
+    &.spinner-circles circle,
+    &.spinner-bubbles circle,
+    &.spinner-dots circle {
+        fill: $spinner-color;
+    }
+}
+
+ion-spinner {
+    * {
+        stroke: $spinner-color !important;
+    }
+    &.spinner-circles circle,
+    &.spinner-bubbles circle,
+    &.spinner-dots circle {
+        fill: $spinner-color !important;
+    }
+}
+
 
 /* extra small devices (less than 768px)*/
 

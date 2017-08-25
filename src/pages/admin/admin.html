@@ -1,11 +1,34 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Admin</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Admin</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+    <ion-card>
+        <ion-card-header>
+            <h1>Library</h1>
+        </ion-card-header>
+        <ion-card-content>
+            Last generated on {{libraryStatus?.lastGeneratedDate|date:"EEEE MMMM d 'at' hh:mm a"}}{{!libraryStatus?'"unknown"':''}}
+        </ion-card-content>
+        <ion-card-content>
+            <button *ngIf="!libraryStatus || libraryStatus?.state==='completed'" (click)="generateLibrary()" ion-button>Generate Library</button>
+            <ng-container *ngIf="libraryStatus && libraryStatus?.state !=='completed'">
+                <ion-spinner></ion-spinner>{{libraryStatus?.state}}
+                <div *ngFor="let file of libraryStatus.activeFiles; index as i;">
+                    <ng-container *ngIf="i < 5">
+                        {{file}}
+                    </ng-container>
+                    <ng-container *ngIf="i==5">
+                        ...{{libraryStatus.activeFiles.length}} more
+                    </ng-container>
+                </div>
+            </ng-container>
+        </ion-card-content>
+
+    </ion-card>
 </ion-content>

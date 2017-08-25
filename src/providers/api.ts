@@ -4,6 +4,7 @@ import { config } from '../config';
 import { Movie } from '../interfaces/movie';
 import { MovieMetadataComparison } from '../interfaces/movie-metadata-comparison';
 import { MovieMetadataSearchResult } from '../interfaces/movie-metadata-search-result';
+import { LibraryGenerationStatus } from '../interfaces/library-generation-status';
 
 @Injectable()
 export class Api {
@@ -13,7 +14,7 @@ export class Api {
     private http2: Http2;
 
     public movies = {
-        getAll: async () => { 
+        getAll: async () => {
             return await this.http2.get<Movie[]>('api/movies');
         },
         getById: async (movieId: number) => {
@@ -30,6 +31,18 @@ export class Api {
          */
         getMovieSearchResults: async (text: string) => {
             return await this.http2.get<MovieMetadataSearchResult[]>('api/metadata/movies/search', { text });
+        }
+    }
+
+    public library = {
+        /**
+         * Start the library generation process. The return 
+         */
+        generate: async () => {
+            return await this.http2.get<LibraryGenerationStatus>('api/library/generate');
+        },
+        getStatus: async () => {
+            return await this.http2.get<LibraryGenerationStatus>('api/library/status');
         }
     }
 }
