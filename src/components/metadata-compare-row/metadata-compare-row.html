@@ -2,14 +2,14 @@
     <ion-col col-5>
         <ion-item class="fill">
             <ion-label stacked>{{property|properCaseSpace}}</ion-label>
-            <div item-content class="incoming-container fill text-white">
+            <div item-content class="incoming-container label-fill text-white">
                 <ion-datetime *ngIf="type == 'date'" disabled displayFormat="MM/DD/YYYY" [(ngModel)]="comparison.incoming[property]"></ion-datetime>
                 <p *ngIf="type ==='text' || type === 'textarea'">
                     {{comparison.incoming[property]}}
                 </p>
                 <image-list *ngIf="type === 'imagelist'" [urls]="comparison.incoming[property]" [comparisonUrls]="comparison.current[property]"
                     buttonType="add" (buttonClick)="addImageUrl(property, $event)" [imageType]="property==='posterUrls'?'poster':'backdrop'"></image-list>
-                <string-list class="fill" item-content *ngIf="type === 'stringlist'" buttonType="add" [items]="comparison.incoming[property]" [comparisonItems]="comparison.current[property]"
+                <string-list *ngIf="type === 'stringlist'" buttonType="add" [items]="comparison.incoming[property]" [comparisonItems]="comparison.current[property]"
                     (buttonClick)="addStringItem(property, $event)"></string-list>
             </div>
         </ion-item>
@@ -22,14 +22,15 @@
     <ion-col col-5>
         <ion-item class="fill">
             <ion-label stacked>{{property|properCaseSpace}}</ion-label>
-            <ion-datetime *ngIf="type=='date' " displayFormat="MM/DD/YYYY " [(ngModel)]="comparison.current[property] "></ion-datetime>
-            <ion-input *ngIf="type=='text' " [(ngModel)]="comparison.current[property] "></ion-input>
-            <ion-textarea *ngIf="type=='textarea' " [(ngModel)]="comparison.current[property] "></ion-textarea>
-            <image-list item-content *ngIf="type==='imagelist' " [urls]="comparison.current[property] " buttonType="remove
-                    " [allowReorder]="true "
-                (buttonClick)="removeImageUrl(property, $event) " [imageType]="property==='posterUrls' ? 'poster':
+            <div item-content class="label-fill">
+                <ion-datetime *ngIf="type=='date' " displayFormat="MM/DD/YYYY " [(ngModel)]="comparison.current[property] "></ion-datetime>
+                <ion-input *ngIf="type=='text' " [(ngModel)]="comparison.current[property] "></ion-input>
+                <ion-textarea *ngIf="type=='textarea' " [(ngModel)]="comparison.current[property] "></ion-textarea>
+                <image-list *ngIf="type==='imagelist' " [urls]="comparison.current[property] " buttonType="remove
+                    " [allowReorder]="true " (buttonClick)="removeImageUrl(property, $event) " [imageType]="property==='posterUrls' ? 'poster':
                     'backdrop' "></image-list>
-            <string-list class="fill" item-content *ngIf="type==='stringlist' " buttonType="remove" [items]="comparison.current[property]"  (buttonClick)="removeStringItem(property, $event)"></string-list>
+                <string-list *ngIf="type==='stringlist' " buttonType="remove" [items]="comparison.current[property]" (buttonClick)="removeStringItem(property, $event)"></string-list>
+            </div>
         </ion-item>
     </ion-col>
 </ion-row>
