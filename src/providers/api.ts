@@ -2,7 +2,7 @@ import { Http2, Http2Factory } from './http2-factory';
 import { Injectable } from '@angular/core';
 import { config } from '../config';
 import { Movie } from '../interfaces/movie';
-import { MovieMetadataComparison } from '../interfaces/movie-metadata-comparison';
+import { MovieMetadataComparison, MovieMetadata } from '../interfaces/movie-metadata-comparison';
 import { MovieMetadataSearchResult } from '../interfaces/movie-metadata-search-result';
 import { LibraryGenerationStatus } from '../interfaces/library-generation-status';
 
@@ -31,6 +31,12 @@ export class Api {
          */
         getMovieSearchResults: async (text: string) => {
             return await this.http2.get<MovieMetadataSearchResult[]>('api/metadata/movies/search', { text });
+        },
+        /**
+         * Save the movie metadata. This will completely replace all metadata items for this movie on disk
+         */
+        save: async (movieId: number, metadata: MovieMetadata) => {
+            return await this.http2.post(`api/metadata/movies/${movieId}`, metadata);
         }
     }
 

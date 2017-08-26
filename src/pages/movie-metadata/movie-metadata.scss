@@ -7,4 +7,13 @@ page-movie-metadata {
     .search-result:hover {
         background-color: blue;
     }
+    .save-toolbar {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        height: 30px;
+        text-align: center;
+        background-color: red;
+    }
 }

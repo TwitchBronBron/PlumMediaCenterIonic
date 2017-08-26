@@ -102,7 +102,7 @@ export class MovieMetadataPage {
 
     public useAllIncoming() {
         this.comparison.current = Object.assign({}, this.comparison.incoming);
-        
+
         //copy each array
         for (var key in this.comparison.incoming) {
             var value = this.comparison.incoming[key];
@@ -110,6 +110,17 @@ export class MovieMetadataPage {
                 this.comparison.current[key] = value.slice();
             }
         }
+        //only keep the first poster
+        this.comparison.current.posterUrls = [this.comparison.current.posterUrls[0]];
+    }
+
+    public async save() {
+        let loading = this.loadingCtrl.create({
+            content: 'Saving metadata'
+        });
+        loading.present();
+        await this.api.metadata.save(this.movie.id, this.comparison.current);
+        loading.dismiss();
     }
 
 }

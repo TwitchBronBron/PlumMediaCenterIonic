@@ -1,3 +1,23 @@
-page-home {
-
+page-admin {
+    $spinner-color: white;
+    ion-spinner {
+        * {
+            stroke: $spinner-color;
+        }
+        &.spinner-circles circle,
+        &.spinner-bubbles circle,
+        &.spinner-dots circle {
+            fill: $spinner-color;
+        }
+    }
+    ion-spinner {
+        * {
+            stroke: $spinner-color !important;
+        }
+        &.spinner-circles circle,
+        &.spinner-bubbles circle,
+        &.spinner-dots circle {
+            fill: $spinner-color !important;
+        }
+    }
 }
