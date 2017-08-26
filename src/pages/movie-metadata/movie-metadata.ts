@@ -100,4 +100,16 @@ export class MovieMetadataPage {
         this.comparison = await this.api.metadata.compareMovie(this.movie.id, this._tmdbId);
     }
 
+    public useAllIncoming() {
+        this.comparison.current = Object.assign({}, this.comparison.incoming);
+        
+        //copy each array
+        for (var key in this.comparison.incoming) {
+            var value = this.comparison.incoming[key];
+            if (Array.isArray(value)) {
+                this.comparison.current[key] = value.slice();
+            }
+        }
+    }
+
 }
