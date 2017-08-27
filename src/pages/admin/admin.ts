@@ -28,7 +28,7 @@ export class AdminPage {
 
     public async monitorStatus() {
         this.libraryStatus = await this.api.library.getStatus();
-        while (this.libraryStatus && this.libraryStatus.state !== 'completed') {
+        while (this.libraryStatus && this.libraryStatus.state !== 'completed' && this.libraryStatus.state !== 'failed') {
             this.libraryStatus = await this.api.library.getStatus();
             await timeoutAsync(500);
         }

@@ -16,14 +16,19 @@
             Last generated on {{libraryStatus?.lastGeneratedDate|date:"EEEE MMMM d 'at' hh:mm a"}}{{!libraryStatus?'"unknown"':''}}
         </ion-card-content>
         <ion-card-content>
-            <button *ngIf="!libraryStatus || libraryStatus?.state==='completed'" (click)="generateLibrary()" ion-button>Generate Library</button>
-            <ng-container *ngIf="libraryStatus && libraryStatus?.state !=='completed'">
+            <button *ngIf="!libraryStatus || libraryStatus?.state==='completed' || libraryStatus?.state==='failed'" (click)="generateLibrary()"
+                ion-button>Generate Library</button>
+            <div style="color:red" *ngIf="libraryStatus?.error">
+                Library generation failed.
+                <br/> {{libraryStatus?.error.Message}}
+            </div>
+            <ng-container *ngIf="libraryStatus && libraryStatus?.state !=='completed' && libraryStatus?.state !== 'failed'">
                 <ion-spinner></ion-spinner>{{libraryStatus?.state}}
-                <div *ngFor="let file of libraryStatus.activeFiles; index as i;">
-                    <ng-container *ngIf="i < 5">
+                <div *ngFor=" let file of libraryStatus.activeFiles; index as i; ">
+                    <ng-container *ngIf="i < 5 ">
                         {{file}}
                     </ng-container>
-                    <ng-container *ngIf="i==5">
+                    <ng-container *ngIf="i==5 ">
                         ...{{libraryStatus.activeFiles.length}} more
                     </ng-container>
                 </div>
