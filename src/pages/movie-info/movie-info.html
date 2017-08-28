@@ -8,9 +8,13 @@
 </ion-header>
 
 <ion-content *ngIf="movie">
-    <img class="backdrop" [imageSwapper]="movie.backdropUrls"/>
+    <div class="backdrop-container">
+        <img class="backdrop" [imageSwapper]="movie.backdropUrls" />
+        <button class="play-button" ion-button [moviePlayClick]="movie">
+            <ion-icon name="play"></ion-icon>
+        </button>
+    </div>
     <div text-center>
-        <button ion-button [moviePlayClick]="movie">Play</button>
     </div>
     <h1>{{movie.title}}</h1>
     <button ion-button [movieMetadataClick]="movie">Manage Metadata</button>

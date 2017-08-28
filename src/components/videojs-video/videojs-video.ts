@@ -27,13 +27,16 @@ export class VideojsVideoComponent {
     @Input()
     public poster: string;
 
+    @Input()
+    public autoplay: string;
+
     ngAfterViewInit() {
         var element = document.getElementById(this.id);
         var self = this;
         var player = videojs(element, {
-            poster: this.poster
+            poster: this.poster,
+            autoplay: this.autoplay
         }, () => {
-
 
         });
     }

@@ -4,4 +4,24 @@ page-movie-info {
         margin: auto;
         display: block;
     }
+    .backdrop-container {
+        position: relative;
+    }
+    .play-button {
+        position: absolute;
+        left: calc(50% - 50px);
+        top: calc(50% - 50px);
+        border-radius: 50%;
+        width: 100px;
+        height: 110px;
+        background: rgba(100, 100, 100, 0.5);
+        border: 7px solid white;
+        font-size: 40px;
+        box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.63);
+        transition: box-shadow .3s ease-in-out;
+    }
+   
+    .play-button.button-md {
+        padding-left: 53px;
+    }
 }
