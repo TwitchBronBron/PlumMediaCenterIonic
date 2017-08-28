@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content *ngIf="movie">
-    <img class="backdrop" [src]="movie.backdropUrl" />
+    <img class="backdrop" [imageSwapper]="movie.backdropUrls"/>
     <div text-center>
         <button ion-button [moviePlayClick]="movie">Play</button>
     </div>

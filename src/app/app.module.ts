@@ -25,6 +25,7 @@ import { AdminPage } from '../pages/admin/admin';
 import { MoviePlayPage } from '../pages/movie-play/movie-play';
 import { MoviePlayClick } from '../directives/movie-play-click';
 import { VideojsVideoComponent } from '../components/videojs-video/videojs-video';
+import { ImageSwapperDirective } from '../directives/image-swapper';
 
 @NgModule({
     declarations: [
@@ -49,6 +50,7 @@ import { VideojsVideoComponent } from '../components/videojs-video/videojs-video
         MovieInfoClick,
         MovieMetadataClick,
         MoviePlayClick,
+        ImageSwapperDirective,
 
         //pipes
         ProperCaseSpacePipe
