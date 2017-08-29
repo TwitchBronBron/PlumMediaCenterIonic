@@ -47,7 +47,8 @@ export class Http2 {
             }
         }, (response: Response) => {
             if (response.text()) {
-                return Promise.reject(response.json());
+                var responseJson = response.json();
+                return Promise.reject(responseJson);
             }
         });
     }

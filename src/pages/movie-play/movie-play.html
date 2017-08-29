@@ -7,6 +7,8 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content *ngIf="movie">
-    <videojs-video [url]="movie.videoUrl" [poster]="movie.backdropUrl" [autoplay]="true"></videojs-video>
+<ion-content>
+    <ng-container *ngIf="movie">
+        <videojs-video [url]="movie.videoUrl" [poster]="movie.backdropUrl" [autoplay]="true"></videojs-video>
+    </ng-container>
 </ion-content>

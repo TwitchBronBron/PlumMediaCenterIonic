@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Api } from '../../providers/api';
 import { Movie } from '../../interfaces/movie';
 import { MovieMetadataComparison } from '../../interfaces/movie-metadata-comparison';
@@ -14,7 +14,8 @@ export class MovieMetadataPage {
         public navCtrl: NavController,
         public navParams: NavParams,
         public api: Api,
-        public loadingCtrl: LoadingController
+        public loadingCtrl: LoadingController,
+        private alertCtrl: AlertController
     ) {
         this.init();
     }
@@ -119,7 +120,16 @@ export class MovieMetadataPage {
             content: 'Saving metadata'
         });
         loading.present();
-        await this.api.metadata.save(this.movie.id, this.comparison.current);
+        try {
+            await this.api.metadata.save(this.movie.id, this.comparison.current);
+        } catch (error) {
+            let alert = this.alertCtrl.create({
+                title: 'Error',
+                message: `An error occurred while saving metadata: ${error.message}`,
+                buttons: ['Dismiss']
+            });
+            alert.present();
+        }
         loading.dismiss();
     }
 

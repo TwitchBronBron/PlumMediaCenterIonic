@@ -7,15 +7,19 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content *ngIf="movie">
-    <div class="backdrop-container">
-        <img class="backdrop" [imageSwapper]="movie.backdropUrls" />
-        <button class="play-button" ion-button [moviePlayClick]="movie">
-            <ion-icon name="play"></ion-icon>
-        </button>
-    </div>
-    <div text-center>
-    </div>
-    <h1>{{movie.title}}</h1>
-    <button ion-button [movieMetadataClick]="movie">Manage Metadata</button>
+<ion-content>
+    <ng-container *ngIf="movie">
+        <div class="backdrop-container">
+            <div class="backdrop-left-cover"></div>
+            <img class="backdrop" [imageSwapper]="movie.backdropUrls" />
+            <div class="backdrop-right-cover"></div>
+            <button class="play-button" ion-button [moviePlayClick]="movie">
+                <ion-icon name="play"></ion-icon>
+            </button>
+        </div>
+        <div text-center>
+        </div>
+        <h1>{{movie.title}}</h1>
+        <button ion-button [movieMetadataClick]="movie">Manage Metadata</button>
+    </ng-container>
 </ion-content>
