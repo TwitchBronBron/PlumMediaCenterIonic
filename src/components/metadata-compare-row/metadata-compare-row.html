@@ -1,7 +1,7 @@
 <ion-row>
     <ion-col col-5>
         <ion-item class="fill">
-            <ion-label stacked>{{property|properCaseSpace}}</ion-label>
+            <ion-label stacked>{{label}} </ion-label>
             <div item-content class="incoming-container label-fill text-white">
                 <ion-datetime *ngIf="type == 'date'" disabled displayFormat="MM/DD/YYYY" [(ngModel)]="comparison.incoming[property]"></ion-datetime>
                 <p *ngIf="type ==='text' || type === 'textarea'">
@@ -23,7 +23,7 @@
     </ion-col>
     <ion-col col-5>
         <ion-item class="fill">
-            <ion-label stacked>{{type==='poster'?'poster': property|properCaseSpace}}</ion-label>
+            <ion-label stacked>{{label}} </ion-label>
             <div item-content class="label-fill">
                 <ion-datetime *ngIf="type=='date' " displayFormat="MM/DD/YYYY " [(ngModel)]="comparison.current[property] "></ion-datetime>
                 <ion-input *ngIf="type=='text' " [(ngModel)]="comparison.current[property] "></ion-input>
@@ -32,7 +32,7 @@
                     " [allowReorder]="true " (buttonClick)="removeImageUrl(property, $event) " [imageType]="property==='posterUrls' ? 'poster':
                     'backdrop' "></image-list>
                 <div *ngIf="type === 'poster'">
-                    <img *ngIf="comparison.current[property][0]" class="poster" [src]="comparison.current[property][0]"/>
+                    <img *ngIf="comparison.current[property][0]" class="poster" [src]="comparison.current[property][0]" />
                     <i *ngIf="!comparison.current[property][0]">
                         No poster selected
                     </i>

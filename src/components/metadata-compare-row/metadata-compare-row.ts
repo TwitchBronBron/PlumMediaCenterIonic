@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MovieMetadataComparison } from '../../interfaces/movie-metadata-comparison';
+import { ProperCaseSpacePipe } from '../../pipes/proper-case-space-pipe';
 
 @Component({
     selector: 'metadata-compare-row',
@@ -10,6 +11,10 @@ export class MetadataCompareRowComponent {
     constructor() {
 
     }
+
+    @Input('label')
+    public labelAttr: string;
+
     @Input()
     public property: string;
 
@@ -25,6 +30,14 @@ export class MetadataCompareRowComponent {
         return this._comparison;
     }
     public _comparison: MovieMetadataComparison;
+
+    /**
+     * The label for the item. If label was specified in attributes, that is used. 
+     * Otherwise, a proper case spaced version of the property name is used
+     */
+    public get label() {
+        return this.labelAttr ? this.labelAttr : ProperCaseSpacePipe.transform(this.property);
+    }
 
     public addImageUrl(propertyName, url) {
         var arr: string[] = this.comparison.current[propertyName];
