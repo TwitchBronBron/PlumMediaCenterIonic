@@ -26,6 +26,9 @@ import { MoviePlayPage } from '../pages/movie-play/movie-play';
 import { MoviePlayClick } from '../directives/movie-play-click';
 import { VideojsVideoComponent } from '../components/videojs-video/videojs-video';
 import { ImageSwapperDirective } from '../directives/image-swapper';
+import { GoToPageClickDirective } from '../directives/go-to-page-click';
+import { SourcesPage } from '../pages/sources/sources';
+import { SaveIconComponent } from '../components/save-icon/save-icon';
 
 @NgModule({
     declarations: [
@@ -38,6 +41,7 @@ import { ImageSwapperDirective } from '../directives/image-swapper';
         MovieInfoPage,
         MovieMetadataPage,
         MoviePlayPage,
+        SourcesPage,
 
         //components
         MovieCardComponent,
@@ -45,12 +49,14 @@ import { ImageSwapperDirective } from '../directives/image-swapper';
         ImageListComponent,
         StringListComponent,
         VideojsVideoComponent,
+        SaveIconComponent,
 
         //directives
         MovieInfoClick,
         MovieMetadataClick,
         MoviePlayClick,
         ImageSwapperDirective,
+        GoToPageClickDirective,
 
         //pipes
         ProperCaseSpacePipe
@@ -68,7 +74,8 @@ import { ImageSwapperDirective } from '../directives/image-swapper';
         ListPage,
         MovieInfoPage,
         MovieMetadataPage,
-        MoviePlayPage
+        MoviePlayPage,
+        SourcesPage
     ],
     providers: [
         Api,

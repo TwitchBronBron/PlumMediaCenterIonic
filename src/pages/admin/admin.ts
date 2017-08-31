@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Api } from '../../providers/api';
 import { LibraryGenerationStatus } from '../../interfaces/library-generation-status';
 import { timeoutAsync } from '../../classes/timeout-async';
+import { Source } from '../../interfaces/source';
 
 @Component({
     selector: 'page-admin',
@@ -18,6 +19,7 @@ export class AdminPage {
     }
     private async init() {
         this.monitorStatus();
+        this.sources = await this.api.sources.getAll();
     }
     public libraryStatus: LibraryGenerationStatus;
 
@@ -33,4 +35,7 @@ export class AdminPage {
             await timeoutAsync(500);
         }
     }
+
+    public sources: Source[];
+    
 }

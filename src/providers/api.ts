@@ -5,6 +5,7 @@ import { Movie } from '../interfaces/movie';
 import { MovieMetadataComparison, MovieMetadata } from '../interfaces/movie-metadata-comparison';
 import { MovieMetadataSearchResult } from '../interfaces/movie-metadata-search-result';
 import { LibraryGenerationStatus } from '../interfaces/library-generation-status';
+import { Source } from '../interfaces/source';
 
 @Injectable()
 export class Api {
@@ -49,6 +50,12 @@ export class Api {
         },
         getStatus: async () => {
             return await this.http2.get<LibraryGenerationStatus>('api/library/status');
+        }
+    }
+
+    public sources = {
+        getAll: async () => {
+            return await this.http2.get<Source[]>('api/sources');
         }
     }
 }
