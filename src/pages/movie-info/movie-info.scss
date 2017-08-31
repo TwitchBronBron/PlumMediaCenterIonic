@@ -20,13 +20,37 @@ page-movie-info {
         box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.63);
         transition: box-shadow .3s ease-in-out;
     }
-    .backdrop-left-cover {
+    .vignette-left,
+    .vignette-right {
         position: absolute;
-        left: 0px;
         top: 0px;
         bottom: 0px;
         width: 25%;
-        background: -webkit-linear-gradient( left, rgba(0, 0, 0, 1) 0%,rgba(0, 0, 0, 1) 50%, rgba(255,0,0,0) 100%);
+        background: black;
+    }
+    .vignette-left {
+        left: 0px;
+    }
+    .vignette-right {
+        right: 0px;
+    }
+    .vignette-left:before,
+    .vignette-right:before {
+        content: '';
+        position: absolute;
+        z-index: 10;
+        background-image: linear-gradient(to right, #000, transparent);
+        top: 0;
+        bottom: 0;
+        width: 100px;
+    }
+    .vignette-left:before {
+        background-image: linear-gradient(to right, #000, transparent);
+        left: 100%;
+    }
+    .vignette-right:before {
+        background-image: linear-gradient(to left, #000, transparent);
+        right: 100%;
     }
     .backdrop-right-cover {
         position: absolute;
@@ -34,7 +58,7 @@ page-movie-info {
         top: 0px;
         bottom: 0px;
         width: 25%;
-        background: -webkit-linear-gradient( right, rgba(0, 0, 0, 1) 0%,rgba(0, 0, 0, 1) 50%, rgba(255,0,0,0) 100%);
+        background: -webkit-linear-gradient( right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
     }
     .play-button.button-md {
         padding-left: 53px;

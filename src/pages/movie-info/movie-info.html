@@ -10,9 +10,9 @@
 <ion-content>
     <ng-container *ngIf="movie">
         <div class="backdrop-container">
-            <div class="backdrop-left-cover"></div>
+            <div class="vignette-left"></div>
             <img class="backdrop" [imageSwapper]="movie.backdropUrls" />
-            <div class="backdrop-right-cover"></div>
+            <div class="vignette-right"></div>
             <button class="play-button" ion-button [moviePlayClick]="movie">
                 <ion-icon name="play"></ion-icon>
             </button>
@@ -20,6 +20,13 @@
         <div text-center>
         </div>
         <h1>{{movie.title}}</h1>
+        <div>
+            <ng-container *ngIf="movie.releaseDate">{{movie.releaseDate | date:'y'}} </ng-container>
+            <ng-container *ngIf="!movie.releaseDate">Release date unknown</ng-container>
+            <ion-badge>{{movie.rating ? movie.rating : 'Rating unknown'}}</ion-badge>
+            {{movie.runtime ? movie.runtime + ' minutes' : 'Runtime unknown'}}
+        </div>
+        <p>{{movie.description}}</p>
         <button ion-button [movieMetadataClick]="movie">Manage Metadata</button>
     </ng-container>
 </ion-content>
