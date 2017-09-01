@@ -27,6 +27,11 @@
                             </ion-select>
                         </ion-item>
                     </ion-col>
+                    <ion-col col-sm-2 text-center>
+                        <ion-item>
+                        <button ion-button color="danger" (click)="sources.splice(sources.indexOf(source),1)">Delete</button>
+                        </ion-item>
+                    </ion-col>
                 </ion-row>
             </ion-grid>
         </ion-card-content>
@@ -34,7 +39,7 @@
     <button ion-button color="secondary" (click)="sources.push({})">
         <ion-icon name="add"></ion-icon>&nbsp;Add source
     </button>
-    <button ion-fab class="save" color="primary">
+    <button ion-fab class="save" color="primary" (click)="save()">
         <save-icon></save-icon>
     </button>
 </ion-content>

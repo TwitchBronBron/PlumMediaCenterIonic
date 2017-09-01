@@ -56,6 +56,13 @@ export class Api {
     public sources = {
         getAll: async () => {
             return await this.http2.get<Source[]>('api/sources');
+        },
+
+        /**
+         * Save this list as the full list of sources
+         */
+        setAll: async (sources: Source[]) => {
+            return await this.http2.post('api/sources', sources);
         }
     }
 }

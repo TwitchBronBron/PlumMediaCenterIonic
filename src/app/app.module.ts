@@ -29,6 +29,9 @@ import { ImageSwapperDirective } from '../directives/image-swapper';
 import { GoToPageClickDirective } from '../directives/go-to-page-click';
 import { SourcesPage } from '../pages/sources/sources';
 import { SaveIconComponent } from '../components/save-icon/save-icon';
+import { Alerter } from '../providers/alerter';
+import { Loader } from '../providers/loader';
+import { Toaster } from '../providers/toaster';
 
 @NgModule({
     declarations: [
@@ -82,6 +85,9 @@ import { SaveIconComponent } from '../components/save-icon/save-icon';
         Http2Factory,
         StatusBar,
         SplashScreen,
+        Alerter,
+        Loader,
+        Toaster,
         { provide: ErrorHandler, useClass: IonicErrorHandler }
     ]
 })
