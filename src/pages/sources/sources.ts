@@ -5,6 +5,7 @@ import { Source } from '../../interfaces/source';
 import { Alerter } from '../../providers/alerter';
 import { Loader } from '../../providers/loader';
 import { Toaster } from '../../providers/toaster';
+import { AdminPage } from '../admin/admin';
 
 @Component({
     selector: 'page-sources',
@@ -38,7 +39,7 @@ export class SourcesPage {
             await libgenPromise;
             await hideLibgen();
             //go back to the previous page
-            this.navCtrl.pop();
+            this.navCtrl.setRoot(AdminPage);
         } catch (e) {
             await hideSave();
             await hideLibgen();

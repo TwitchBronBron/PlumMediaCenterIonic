@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Api } from '../../providers/api';
 import { Movie } from '../../interfaces/movie';
+import { SourcesPage } from '../sources/sources';
 
 @Component({
     selector: 'page-home',
@@ -13,12 +14,15 @@ export class HomePage {
         public navCtrl: NavController,
         public api: Api
     ) {
-        api.movies.getAll().then((movies) => {
-            this.movies = movies;
-        }, (err) => {
 
-        });
+    }
+    async ionViewDidEnter() {
+        this.movies = await this.api.movies.getAll();
     }
     public movies: Movie[];
+
+    navigateToAddMediaSource() {
+        this.navCtrl.push(SourcesPage);
+    }
 
 }

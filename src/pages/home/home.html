@@ -7,6 +7,11 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding text-center>
     <movie-card *ngFor="let movie of movies" [movie]="movie" [movieInfoClick]="movie"></movie-card>
+    <p *ngIf="movies?.length === 0">Oh snap! There are no movies in your library.
+        <br/>
+        <br/>
+        <button ion-button (click)="navigateToAddMediaSource()">Add a media source</button>
+    </p>
 </ion-content>
