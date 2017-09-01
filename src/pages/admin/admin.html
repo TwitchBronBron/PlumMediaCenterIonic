@@ -12,18 +12,25 @@
         <ion-card-header>
             <h1>Library</h1>
         </ion-card-header>
-        <ion-card-content>
+        <ion-card-content *ngIf="!isCheckingStatus">
             Last generated on {{libraryStatus?.lastGeneratedDate|date:"EEEE MMMM d 'at' hh:mm a"}}{{!libraryStatus?'"unknown"':''}}
+            <ng-container *ngIf="dateDifference">
+                ({{dateDifference}} ago)
+            </ng-container>
         </ion-card-content>
         <ion-card-content>
-            <button *ngIf="!libraryStatus || libraryStatus?.state==='completed' || libraryStatus?.state==='failed'" (click)="generateLibrary()"
-                ion-button>Generate Library</button>
+            <button *ngIf="generateLibraryButtonIsVisible" (click)="generateLibrary()" ion-button>Generate Library</button>
+            <ng-container *ngIf="isLibGenRequestProcessing">
+                <ion-spinner></ion-spinner>Generating library
+            </ng-container>
+            <ng-container *ngIf="isCheckingStatus">
+                <ion-spinner></ion-spinner>{{libraryStatus && libraryStatus.state? libraryStatus.state: 'Checking library generator status'}}
+            </ng-container>
             <div style="color:red" *ngIf="libraryStatus?.error">
                 Library generation failed.
                 <br/> {{libraryStatus?.error.Message}}
             </div>
-            <ng-container *ngIf="libraryStatus && libraryStatus?.state !=='completed' && libraryStatus?.state !== 'failed'">
-                <ion-spinner></ion-spinner>{{libraryStatus?.state}}
+            <ng-container *ngIf="libraryStatus && libraryStatus?.isProcessing">
                 <div *ngFor=" let file of libraryStatus.activeFiles; index as i; ">
                     <ng-container *ngIf="i < 5 ">
                         {{file}}
