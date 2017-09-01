@@ -29,7 +29,7 @@ export class Http2 {
     /**
      * Perform any request type
      */
-    private request<T>(url: string, config: any): Promise<T> {
+    private request<T>(url: string, config: RequestOptions): Promise<T> {
         var requestConfig: RequestOptions = Object.assign({}, config, {
             search: this.getParams(config.params),
             method: config.method
@@ -64,7 +64,7 @@ export class Http2 {
         return result;
     }
 
-    public get<T>(url: string, params?: any, config?: any): Promise<T> {
+    public get<T>(url: string, params?: any, config?: RequestOptions): Promise<T> {
         var cfg = Object.assign({}, config, {
             method: 'GET',
             params: params
@@ -73,7 +73,7 @@ export class Http2 {
         return this.request<T>(url, cfg);
     }
 
-    public post<T>(url: string, body?: any, config?: any): Promise<T> {
+    public post<T>(url: string, body?: any, config?: RequestOptions): Promise<T> {
         var cfg = Object.assign({}, config, {
             method: 'POST',
             body: body
@@ -81,7 +81,7 @@ export class Http2 {
         return this.request<T>(url, cfg);
     }
 
-    public put<T>(url: string, body?: any, config?: any): Promise<T> {
+    public put<T>(url: string, body?: any, config?: RequestOptions): Promise<T> {
         var cfg = Object.assign({}, config, {
             method: 'PUT',
             body: body
@@ -90,7 +90,7 @@ export class Http2 {
         return this.request<T>(url, cfg);
     }
 
-    public delete<T>(url: string, body?: any, config?: any): Promise<T> {
+    public delete<T>(url: string, body?: any, config?: RequestOptions): Promise<T> {
         var cfg = Object.assign({}, config, {
             method: 'DELETE',
             body: body

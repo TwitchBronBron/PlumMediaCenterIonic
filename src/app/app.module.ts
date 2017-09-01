@@ -35,6 +35,8 @@ import { Alerter } from '../providers/alerter';
 import { Loader } from '../providers/loader';
 import { Toaster } from '../providers/toaster';
 import { Config as BaseConfig } from '../config/config';
+import { InstallDatabasePage } from '../pages/install-database/install-database';
+import { InitializePage } from '../pages/initialize/initialize';
 
 @NgModule({
     declarations: [
@@ -48,6 +50,8 @@ import { Config as BaseConfig } from '../config/config';
         MovieMetadataPage,
         MoviePlayPage,
         SourcesPage,
+        InstallDatabasePage,
+        InitializePage,
 
         //components
         MovieCardComponent,
@@ -81,7 +85,9 @@ import { Config as BaseConfig } from '../config/config';
         MovieInfoPage,
         MovieMetadataPage,
         MoviePlayPage,
-        SourcesPage
+        SourcesPage,
+        InstallDatabasePage,
+        InitializePage
     ],
     providers: [
         Api,

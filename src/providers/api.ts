@@ -65,4 +65,19 @@ export class Api {
             return await this.http2.post('api/sources', sources);
         }
     }
+
+    public database = {
+        /**
+         * Determine if the database is installed on the server
+         */
+        getIsInstalled: async () => {
+            return await this.http2.get<boolean>('api/database/isInstalled');
+        },
+        /**
+         * Install the pmc database
+         */
+        install: async (rootUsername: string, rootPassword: string) => {
+            return await this.http2.post('api/database/install', { rootUsername, rootPassword });
+        }
+    }
 }
