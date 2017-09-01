@@ -1,5 +1,5 @@
 {
-  "name": "PlumMediaCenterWeb",
+  "name": "pmc-web",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
@@ -9,7 +9,10 @@
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
+    "ionic:serve": "ionic-app-scripts serve",
+    "ionic:build-prod": "ionic-app-scripts build --release --prod  --wwwDir .publish --buildDir .publish/build",
+    "copy-to-prod": "copyup \".build/**/*\" \"//192.168.1.8/dotnet/pmc/wwwroot/\" ",
+    "publish": "npm run ionic:build-prod && npm run copy-to-prod"
   },
   "dependencies": {
     "@angular/common": "4.1.3",
