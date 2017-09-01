@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import videojs from 'video.js';
 
 @Component({
@@ -32,7 +32,6 @@ export class VideojsVideoComponent {
 
     ngAfterViewInit() {
         var element = document.getElementById(this.id);
-        var self = this;
         var player = videojs(element, {
             poster: this.poster,
             autoplay: this.autoplay

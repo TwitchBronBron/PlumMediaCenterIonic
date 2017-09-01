@@ -1,7 +1,5 @@
 import { Directive, Input, ElementRef, HostListener } from '@angular/core';
-import { Movie } from '../interfaces/movie';
 import { NavController } from 'ionic-angular';
-import { MoviePlayPage } from '../pages/movie-play/movie-play';
 import { SourcesPage } from '../pages/sources/sources';
 
 @Directive({ selector: '[goToPageClick]' })

@@ -1,3 +1,5 @@
+import { Config } from '../config/local';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -32,6 +34,7 @@ import { SaveIconComponent } from '../components/save-icon/save-icon';
 import { Alerter } from '../providers/alerter';
 import { Loader } from '../providers/loader';
 import { Toaster } from '../providers/toaster';
+import { Config as BaseConfig } from '../config/config';
 
 @NgModule({
     declarations: [
@@ -88,7 +91,8 @@ import { Toaster } from '../providers/toaster';
         Alerter,
         Loader,
         Toaster,
-        { provide: ErrorHandler, useClass: IonicErrorHandler }
+        { provide: ErrorHandler, useClass: IonicErrorHandler },
+        { provide: BaseConfig, useClass: Config }
     ]
 })
 export class AppModule { }

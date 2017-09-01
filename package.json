@@ -11,7 +11,7 @@
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
     "ionic:build-prod": "ionic-app-scripts build --release --prod  --wwwDir .publish --buildDir .publish/build",
-    "copy-to-prod": "copyup \".build/**/*\" \"//192.168.1.8/dotnet/pmc/wwwroot/\" ",
+    "copy-to-prod": "copyup \".publish/**/*\" \"//192.168.1.8/dotnet/pmc/wwwroot/\" ",
     "publish": "npm run ionic:build-prod && npm run copy-to-prod"
   },
   "dependencies": {

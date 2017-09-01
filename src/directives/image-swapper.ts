@@ -1,7 +1,4 @@
-import { Directive, Input, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { Movie } from '../interfaces/movie';
-import { NavController } from 'ionic-angular';
-import { MovieInfoPage } from '../pages/movie-info/movie-info';
+import { Directive, Input, ElementRef, OnDestroy, OnInit } from '@angular/core';
 
 @Directive({ selector: '[imageSwapper]' })
 export class ImageSwapperDirective implements OnDestroy, OnInit {

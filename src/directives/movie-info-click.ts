@@ -11,7 +11,6 @@ export class MovieInfoClick {
 
     @Input("movieInfoClick")
     public set movieOrId(value: any) {
-        var movieId: number;
         if (typeof value === 'object') {
             this.movieId = (value as Movie).id;
         } else {
