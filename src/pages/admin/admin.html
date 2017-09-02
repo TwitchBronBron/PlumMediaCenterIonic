@@ -18,6 +18,10 @@
                 ({{lastGeneratedDateDifference}} ago)
             </ng-container>
         </ion-card-content>
+        <div padding *ngIf="isCheckingStatus && percentage">
+            processed {{libraryStatus.countCompleted}} of {{libraryStatus.countTotal}}
+            <progress-bar [percentage]="percentage"></progress-bar>
+        </div>
         <ion-card-content>
             <button *ngIf="generateLibraryButtonIsVisible" (click)="generateLibrary()" ion-button>Generate Library</button>
             <ng-container *ngIf="isLibGenRequestProcessing">
@@ -25,7 +29,7 @@
             </ng-container>
             <ng-container *ngIf="isCheckingStatus">
                 <ion-spinner></ion-spinner>{{libraryStatus && libraryStatus.state? libraryStatus.state: 'Checking library generator status'}}
-                <ng-container *ngIf="getTimeRemaining()">
+                <ng-container *ngIf="getTimeRemaining() && libraryStatus">
                     ({{getTimeRemaining()}} remaining)
                 </ng-container>
             </ng-container>

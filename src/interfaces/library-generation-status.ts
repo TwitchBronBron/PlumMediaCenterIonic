@@ -3,9 +3,12 @@ export interface LibraryGenerationStatus {
     isProcessing: boolean;
     lastGeneratedDate: Date;
     movieCountTotal: number;
-    movieCountCurrent: number;
+    movieCountCompleted: number;
+    tvShowCountCompleted: number;
+    tvShowCountTotal: number;
     countTotal: number;
-    countCurrent: number;
+    countCompleted: number;
+    countRemaining: number;
     secondsRemaining: number;
     activeMovies: string[];
 }

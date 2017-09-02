@@ -49,9 +49,7 @@ export class AdminPage {
     public async monitorStatus() {
         if (this.isCheckingStatus == false) {
             this.isCheckingStatus = true;
-            if (this.libraryStatus) {
-                this.libraryStatus.state = undefined;
-            }
+            this.libraryStatus = undefined;
             await this.util.timeoutAsync(1000);
             this.libraryStatus = await this.api.library.getStatus();
             while (this.libraryStatus && this.libraryStatus.isProcessing) {
@@ -84,6 +82,14 @@ export class AdminPage {
         } else {
             return 'less than a minute';
         }
+    }
+
+    public get percentage() {
+        if (!this.libraryStatus) {
+            return null;
+        }
+        var percentage = Math.floor((this.libraryStatus.countCompleted / this.libraryStatus.countTotal) * 100);
+        return percentage;
     }
 
     public sources: Source[];

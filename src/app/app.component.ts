@@ -14,7 +14,7 @@ import { InitializePage } from '../pages/initialize/initialize';
 export class MyApp {
     @ViewChild(Nav) nav: Nav;
 
-    rootPage: any = HomePage;
+    rootPage: any = AdminPage; //InitializePage;
 
     pages: Array<{ title: string, component: any }>;
 
@@ -29,8 +29,7 @@ export class MyApp {
         this.pages = [
             { title: 'Home', component: HomePage },
             { title: 'Admin', component: AdminPage }
-        ];
-        this.rootPage = InitializePage;
+        ]; 
     }
 
     async initializeApp() {

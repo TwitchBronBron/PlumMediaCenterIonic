@@ -37,6 +37,7 @@ import { Config as BaseConfig } from '../config/config';
 import { InstallDatabasePage } from '../pages/install-database/install-database';
 import { InitializePage } from '../pages/initialize/initialize';
 import { Util } from '../providers/util';
+import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 
 @NgModule({
     declarations: [
@@ -59,6 +60,7 @@ import { Util } from '../providers/util';
         StringListComponent,
         VideojsVideoComponent,
         SaveIconComponent,
+        ProgressBarComponent,
 
         //directives
         MovieInfoClick,
