@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Api } from '../../providers/api';
-import { LibraryGenerationStatus } from '../../interfaces/library-generation-status';
-import { timeoutAsync } from '../../classes/timeout-async';
-import { Source } from '../../interfaces/source';
 import { Loader } from '../../providers/loader';
 import { Alerter } from '../../providers/alerter';
 import { HomePage } from '../home/home';

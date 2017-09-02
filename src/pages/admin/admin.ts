@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Api } from '../../providers/api';
 import { LibraryGenerationStatus } from '../../interfaces/library-generation-status';
-import { timeoutAsync } from '../../classes/timeout-async';
 import { Source } from '../../interfaces/source';
-
+import { Util } from '../../providers/util';
 @Component({
     selector: 'page-admin',
     templateUrl: 'admin.html'
@@ -13,7 +12,8 @@ export class AdminPage {
 
     constructor(
         public navCtrl: NavController,
-        public api: Api
+        public api: Api,
+        private util: Util
     ) {
         this.init();
     }
@@ -40,7 +40,7 @@ export class AdminPage {
 
     public async generateLibrary() {
         this.isLibGenRequestProcessing = true;
-        await timeoutAsync(1000);
+        await this.util.timeoutAsync(1000);
         this.libraryStatus = await this.api.library.generate();
         this.monitorStatus();
         this.isLibGenRequestProcessing = false;
@@ -52,48 +52,38 @@ export class AdminPage {
             if (this.libraryStatus) {
                 this.libraryStatus.state = undefined;
             }
-            await timeoutAsync(1000);
+            await this.util.timeoutAsync(1000);
             this.libraryStatus = await this.api.library.getStatus();
             while (this.libraryStatus && this.libraryStatus.isProcessing) {
                 this.libraryStatus = await this.api.library.getStatus();
-                await timeoutAsync(500);
+                await this.util.timeoutAsync(1000);
             }
             this.isCheckingStatus = false;
         }
     }
 
-    public get dateDifference() {
+    public get lastGeneratedDateDifference() {
         if (!this.libraryStatus || !this.libraryStatus.lastGeneratedDate) {
             return undefined;
         }
-        var lastDate = new Date(this.libraryStatus.lastGeneratedDate);
-        var now = new Date();
-        var milliseconds = now.getTime() - lastDate.getTime();
-        var seconds = Math.floor(milliseconds / 1000)
-        milliseconds = milliseconds - (seconds * 1000);
-        //get the total number of minutes
-        var minutes = Math.floor(seconds / 60);
-        seconds = seconds - (minutes * 60)
-        var hours = Math.floor(minutes / 60);
-        minutes = minutes - (hours * 60);
-        var days = Math.floor(hours / 24);
-        hours = hours - (days * 24)
+        return this.util.getDateDifference(new Date(this.libraryStatus.lastGeneratedDate), new Date());
+    }
 
-        var parts = [];
-        if (days > 0) {
-            parts.push(`${days} ${(days === 1 ? 'day' : 'days')}`);
+    public getTimeRemaining() {
+        if (!this.libraryStatus || this.libraryStatus.secondsRemaining === null) {
+            return 'calculating time';
         }
-        if (hours > 0) {
-            parts.push(`${hours} ${(hours === 1 ? 'hour' : 'hours')}`);
+        if (this.libraryStatus.isProcessing === false) {
+            return null;
         }
-        if (minutes > 0) {
-            parts.push(`${minutes} ${(minutes === 1 ? 'minute' : 'minutes')}`);
+        var endDate = new Date();
+        endDate.setSeconds(endDate.getSeconds() + this.libraryStatus.secondsRemaining);
+        var description = this.util.getDateDifference(new Date(), endDate);
+        if (description !== '') {
+            return description;
+        } else {
+            return 'less than a minute';
         }
-        if (parts.length === 0 && (seconds > 0 || milliseconds > 0)) {
-            parts.push('less than a minute');
-        }
-        var result = parts.join(' ');
-        return result;
     }
 
     public sources: Source[];

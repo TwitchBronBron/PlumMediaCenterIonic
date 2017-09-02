@@ -32,7 +32,8 @@ export class VideojsVideoComponent {
 
     ngAfterViewInit() {
         var element = document.getElementById(this.id);
-        var player = videojs(element, {
+        //var player = 
+        videojs(element, {
             poster: this.poster,
             autoplay: this.autoplay
         }, () => {

@@ -6,7 +6,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -37,6 +36,7 @@ import { Toaster } from '../providers/toaster';
 import { Config as BaseConfig } from '../config/config';
 import { InstallDatabasePage } from '../pages/install-database/install-database';
 import { InitializePage } from '../pages/initialize/initialize';
+import { Util } from '../providers/util';
 
 @NgModule({
     declarations: [
@@ -45,7 +45,6 @@ import { InitializePage } from '../pages/initialize/initialize';
         //pages
         AdminPage,
         HomePage,
-        ListPage,
         MovieInfoPage,
         MovieMetadataPage,
         MoviePlayPage,
@@ -81,7 +80,6 @@ import { InitializePage } from '../pages/initialize/initialize';
         MyApp,
         HomePage,
         AdminPage,
-        ListPage,
         MovieInfoPage,
         MovieMetadataPage,
         MoviePlayPage,
@@ -97,6 +95,7 @@ import { InitializePage } from '../pages/initialize/initialize';
         Alerter,
         Loader,
         Toaster,
+        Util,
         { provide: ErrorHandler, useClass: IonicErrorHandler },
         { provide: BaseConfig, useClass: Config }
     ]

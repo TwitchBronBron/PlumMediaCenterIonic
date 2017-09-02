@@ -14,8 +14,8 @@
         </ion-card-header>
         <ion-card-content *ngIf="!isCheckingStatus">
             Last generated on {{libraryStatus?.lastGeneratedDate|date:"EEEE MMMM d 'at' hh:mm a"}}{{!libraryStatus?'"unknown"':''}}
-            <ng-container *ngIf="dateDifference">
-                ({{dateDifference}} ago)
+            <ng-container *ngIf="lastGeneratedDateDifference">
+                ({{lastGeneratedDateDifference}} ago)
             </ng-container>
         </ion-card-content>
         <ion-card-content>
@@ -25,11 +25,10 @@
             </ng-container>
             <ng-container *ngIf="isCheckingStatus">
                 <ion-spinner></ion-spinner>{{libraryStatus && libraryStatus.state? libraryStatus.state: 'Checking library generator status'}}
+                <ng-container *ngIf="getTimeRemaining()">
+                    ({{getTimeRemaining()}} remaining)
+                </ng-container>
             </ng-container>
-            <div style="color:red" *ngIf="libraryStatus?.error">
-                Library generation failed.
-                <br/> {{libraryStatus?.error.Message}}
-            </div>
             <ng-container *ngIf="libraryStatus && libraryStatus?.isProcessing">
                 <div *ngFor=" let file of libraryStatus.activeFiles; index as i; ">
                     <ng-container *ngIf="i < 5 ">
@@ -40,6 +39,10 @@
                     </ng-container>
                 </div>
             </ng-container>
+            <div style="color:red" *ngIf="libraryStatus?.error">
+                Library generation failed.
+                <br/> {{libraryStatus?.error.Message}}
+            </div>
         </ion-card-content>
 
     </ion-card>
