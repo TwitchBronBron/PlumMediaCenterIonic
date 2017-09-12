@@ -55,6 +55,20 @@
             <h1>Shared folders</h1>
         </ion-card-header>
         <ion-card-content>
+            <table *ngIf="sources">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Path</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let source of sources">
+                        <td>{{source.sourceType}}</td>
+                        <td>{{source.folderPath}}</td>
+                    </tr>
+                </tbody>
+            </table>
             <button ion-button goToPageClick="Sources">Manage shared folders</button>
         </ion-card-content>
     </ion-card>

@@ -14,7 +14,7 @@ import { InitializePage } from '../pages/initialize/initialize';
 export class MyApp {
     @ViewChild(Nav) nav: Nav;
 
-    rootPage: any = AdminPage; //InitializePage;
+    rootPage: any = InitializePage;
 
     pages: Array<{ title: string, component: any }>;
 

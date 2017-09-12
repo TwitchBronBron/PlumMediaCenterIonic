@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Alerter } from '../../providers/alerter';
 
 @Component({
     selector: 'string-list',
@@ -6,7 +7,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class StringListComponent {
 
-    constructor() {
+    constructor(
+        private alerter: Alerter
+    ) {
     }
     @Input()
     public items: string[];
@@ -19,8 +22,18 @@ export class StringListComponent {
     @Output()
     public buttonClick = new EventEmitter<string>();
 
+    @Input()
+    public showAdd?: boolean = false;
+
     public click(url: string) {
         this.buttonClick.emit(url);
+    }
+
+    public async addNewItem() {
+        var value = await this.alerter.prompt('Enter a new value', 'Accept', 'Cancel');
+        if (value) {
+            this.items.push(value);
+        }
     }
 
     public isInUse(value: string) {

@@ -4,6 +4,7 @@ import { Api } from '../../providers/api';
 import { LibraryGenerationStatus } from '../../interfaces/library-generation-status';
 import { Source } from '../../interfaces/source';
 import { Util } from '../../providers/util';
+import { Alerter } from '../../providers/alerter';
 @Component({
     selector: 'page-admin',
     templateUrl: 'admin.html'
@@ -13,7 +14,8 @@ export class AdminPage {
     constructor(
         public navCtrl: NavController,
         public api: Api,
-        private util: Util
+        private util: Util,
+        private alerter: Alerter
     ) {
         this.init();
     }
@@ -47,15 +49,20 @@ export class AdminPage {
     }
 
     public async monitorStatus() {
-        if (this.isCheckingStatus == false) {
-            this.isCheckingStatus = true;
-            this.libraryStatus = undefined;
-            await this.util.timeoutAsync(1000);
-            this.libraryStatus = await this.api.library.getStatus();
-            while (this.libraryStatus && this.libraryStatus.isProcessing) {
-                this.libraryStatus = await this.api.library.getStatus();
+        try {
+            if (this.isCheckingStatus == false) {
+                this.isCheckingStatus = true;
+                this.libraryStatus = undefined;
                 await this.util.timeoutAsync(1000);
+                this.libraryStatus = await this.api.library.getStatus();
+                while (this.libraryStatus && this.libraryStatus.isProcessing) {
+                    this.libraryStatus = await this.api.library.getStatus();
+                    await this.util.timeoutAsync(1000);
+                }
             }
+        } catch (e) {
+            this.alerter.alert(JSON.stringify(e));
+        } finally {
             this.isCheckingStatus = false;
         }
     }

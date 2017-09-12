@@ -56,4 +56,48 @@ export class Alerter {
             confirm.present();
         });
     }
+
+
+    private static IdCounter = 1;
+    /**
+     * Prompt the user for input values
+     * @param message
+     * @param acceptText 
+     * @param rejectText 
+     * @param inputs 
+     */
+    public async prompt(message: string, acceptText = 'Save', rejectText = 'Cancel') {
+        return new Promise<string>((resolve, reject) => {
+            var id = `alerter-prompt-input-` + Alerter.IdCounter++;
+            let alert = this.alertCtrl.create({
+                title: '',
+                message,
+                inputs: [{
+                    name: 'value',
+                    placeholder: 'value',
+                    id: id
+                }],
+                buttons: [
+                    {
+                        text: rejectText,
+                        handler: () => {
+                            resolve(undefined);
+                        }
+                    },
+                    {
+                        text: acceptText,
+                        handler: (data) => {
+                            resolve(data.value);
+                        }
+                    }
+                ]
+            });
+
+            alert.present().then(() => {
+                //focus the first input element
+                document.getElementById(id).focus();
+            });
+        });
+
+    }
 }

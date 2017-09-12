@@ -37,7 +37,7 @@
                         No poster selected
                     </i>
                 </div>
-                <string-list *ngIf="type==='stringlist' " buttonType="remove" [items]="comparison.current[property]" (buttonClick)="removeStringItem(property, $event)"></string-list>
+                <string-list *ngIf="type==='stringlist' " buttonType="remove" [showAdd]="true" [items]="comparison.current[property]" (buttonClick)="removeStringItem(property, $event)"></string-list>
             </div>
         </ion-item>
     </ion-col>

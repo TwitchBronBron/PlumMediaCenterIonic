@@ -5,6 +5,13 @@ string-list {
     }
     ion-badge.disabled {
         opacity: .2;
-        padding:13px;
+        padding: 13px;
+    }
+    button[ion-button] {
+        margin: 5px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 8px;
+        vertical-align:middle;
     }
 }
