@@ -10,6 +10,9 @@
 <ion-content>
     <ng-container *ngIf="movie">
         <div class="backdrop-container">
+            <div class="title-container">
+                <h1 class="title">{{movie.title}}</h1>
+            </div>
             <div class="vignette-left"></div>
             <img class="backdrop" [imageSwapper]="movie.backdropUrls" />
             <div class="vignette-right"></div>
@@ -19,7 +22,6 @@
         </div>
         <div text-center>
         </div>
-        <h1>{{movie.title}}</h1>
         <div>
             <ng-container *ngIf="movie.releaseDate">{{movie.releaseDate | date:'y'}} </ng-container>
             <ng-container *ngIf="!movie.releaseDate">Release date unknown</ng-container>
