@@ -6,6 +6,7 @@ import { MovieMetadataComparison, MovieMetadata } from '../interfaces/movie-meta
 import { MovieMetadataSearchResult } from '../interfaces/movie-metadata-search-result';
 import { LibraryGenerationStatus } from '../interfaces/library-generation-status';
 import { Source } from '../interfaces/source';
+import { MediaType } from '../interfaces/media-type';
 
 @Injectable()
 export class Api {
@@ -38,6 +39,14 @@ export class Api {
          */
         save: async (movieId: number, metadata: MovieMetadata) => {
             return await this.http2.post(`api/metadata/movies/${movieId}`, metadata);
+        }
+    }
+    public mediaType = {
+        /**
+         * Get a list of all possible media types
+         */
+        getAll: async () => {
+            return await this.http2.get<MediaType[]>('api/media/mediaTypes');
         }
     }
 

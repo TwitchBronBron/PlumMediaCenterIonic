@@ -6,6 +6,7 @@ import { Alerter } from '../../providers/alerter';
 import { Loader } from '../../providers/loader';
 import { Toaster } from '../../providers/toaster';
 import { AdminPage } from '../admin/admin';
+import { MediaType } from '../../interfaces/media-type';
 
 @Component({
     selector: 'page-sources',
@@ -24,8 +25,12 @@ export class SourcesPage {
     }
     private async init() {
         this.sources = await this.api.sources.getAll();
+        this.mediaTypes = await this.api.mediaType.getAll();
     }
 
+    public mediaTypes: MediaType[];
+    public sources: Source[];
+    
     public async save() {
         var hideSave = () => { }, hideLibgen = () => { };
         try {
@@ -48,6 +53,5 @@ export class SourcesPage {
 
     }
 
-    public sources: Source[];
 
 }

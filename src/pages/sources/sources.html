@@ -21,15 +21,16 @@
                     <ion-col col-12 col-sm>
                         <ion-item>
                             <ion-label floating>Media Type</ion-label>
-                            <ion-select [(ngModel)]="source.sourceType">
-                                <ion-option value="movie">Movies</ion-option>
-                                <ion-option value="tvserie">Tv Shows</ion-option>
+                            <ion-select [(ngModel)]="source.mediaType">
+                                <ng-container *ngFor="let mediaType of mediaTypes">
+                                    <ion-option *ngIf="mediaType.name !== 'TvEpisode'" [value]="mediaType.id">{{mediaType.name}}</ion-option>
+                                </ng-container>
                             </ion-select>
                         </ion-item>
                     </ion-col>
                     <ion-col col-sm-2 text-center>
                         <ion-item>
-                        <button ion-button color="danger" (click)="sources.splice(sources.indexOf(source),1)">Delete</button>
+                            <button ion-button color="danger" (click)="sources.splice(sources.indexOf(source),1)">Delete</button>
                         </ion-item>
                     </ion-col>
                 </ion-row>
