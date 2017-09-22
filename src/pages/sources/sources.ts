@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Api } from '../../providers/api';
-import { Source } from '../../interfaces/source';
 import { Alerter } from '../../providers/alerter';
 import { Loader } from '../../providers/loader';
 import { Toaster } from '../../providers/toaster';
 import { AdminPage } from '../admin/admin';
 import { MediaType } from '../../interfaces/media-type';
+import { Source } from '../../interfaces/source';
 
 @Component({
     selector: 'page-sources',

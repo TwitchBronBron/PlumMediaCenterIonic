@@ -56,15 +56,19 @@ img.backdrop-card {
     max-width: inherit;
 }
 
-/* line underneath text inputs */
+//line underneath text inputs
 .card-md .item-input .item-inner {
-    border-bottom-color: #999; 
+    border-bottom-color: #999;
     -webkit-box-shadow: inset 0 -1px 0 0 #999;
     box-shadow: inset 0 -1px 0 0 #999;
 }
 
-/* extra small devices (less than 768px)*/
+//Fix weird extra space below image
+movie-card .poster {
+    margin-bottom: -5px;
+}
 
+//extra small devices (less than 768px)
 @media (max-width:767px) {
     .poster {
         width: 100px;
@@ -76,9 +80,7 @@ img.backdrop-card {
     }
 }
 
-
-/* Small devices (tablets, 768px and up) */
-
+//Small devices (tablets, 768px and up) 
 @media (min-width: 768px) {
     .poster {
         width: 134px;
@@ -90,9 +92,7 @@ img.backdrop-card {
     }
 }
 
-
-/* Medium devices (desktops, 992px and up) */
-
+//Medium devices (desktops, 992px and up) 
 @media (min-width: 992px) {
     .poster {
         width: 172px;
@@ -104,9 +104,7 @@ img.backdrop-card {
     }
 }
 
-
-/* Large devices (large desktops, 1200px and up) */
-
+//Large devices (large desktops, 1200px and up) 
 @media (min-width: 1200px) {
     .poster {
         width: 208px;

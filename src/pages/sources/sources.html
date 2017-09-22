@@ -21,7 +21,7 @@
                     <ion-col col-12 col-sm>
                         <ion-item>
                             <ion-label floating>Media Type</ion-label>
-                            <ion-select [(ngModel)]="source.mediaType">
+                            <ion-select [(ngModel)]="source.mediaTypeId">
                                 <ng-container *ngFor="let mediaType of mediaTypes">
                                     <ion-option *ngIf="mediaType.name !== 'TvEpisode'" [value]="mediaType.id">{{mediaType.name}}</ion-option>
                                 </ng-container>
