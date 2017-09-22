@@ -2,6 +2,7 @@ export interface Movie {
     id: number;
     title: string;
     sourceId: number;
+    summary: string;
     description: string;
     duration: number;
     rating?: string;
@@ -9,7 +10,7 @@ export interface Movie {
     runtime: number;
     tmdbId?: number;
     posterUrl: string;
-    backdropUrl: string;
+    backdropUrls: string[];
     videoUrl: string;
 }
 

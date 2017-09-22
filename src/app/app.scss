@@ -14,6 +14,7 @@
 // automatically applied to the <body> element in the app.
 //include video.js stylesheet
 @import '../../node_modules/video.js/dist/video-js';
+*[inline-block],
 .inline-block {
     display: inline-block;
 }
@@ -39,6 +40,7 @@
     height: 100%;
 }
 
+*[v-center],
 .v-center {
     vertical-align: middle;
 }

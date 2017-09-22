@@ -49,15 +49,16 @@ export class AdminPage {
     }
 
     public async monitorStatus() {
+        var interval = 2000;
         try {
             if (this.isCheckingStatus == false) {
                 this.isCheckingStatus = true;
                 this.libraryStatus = undefined;
-                await this.util.timeoutAsync(1000);
+                await this.util.timeoutAsync(interval);
                 this.libraryStatus = await this.api.library.getStatus();
                 while (this.libraryStatus && this.libraryStatus.isProcessing) {
                     this.libraryStatus = await this.api.library.getStatus();
-                    await this.util.timeoutAsync(1000);
+                    await this.util.timeoutAsync(interval);
                 }
             }
         } catch (e) {

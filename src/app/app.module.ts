@@ -38,6 +38,7 @@ import { InstallDatabasePage } from '../pages/install-database/install-database'
 import { InitializePage } from '../pages/initialize/initialize';
 import { Util } from '../providers/util';
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -74,6 +75,7 @@ import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
     ],
     imports: [
         BrowserModule,
+        FormsModule,
         HttpModule,
         IonicModule.forRoot(MyApp),
     ],

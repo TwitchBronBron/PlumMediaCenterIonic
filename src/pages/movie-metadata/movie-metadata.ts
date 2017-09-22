@@ -33,6 +33,18 @@ export class MovieMetadataPage {
     }
 
     public movie: Movie;
+    public changeIncoming() {
+        this.tmdbId = undefined;
+    }
+
+    public get movieFolderAndFile() {
+        if (!this.movie) {
+            return null;
+        }
+        var pattern = /(.*\/source\d+)/g;
+        return this.movie.videoUrl.replace(pattern, '');
+    }
+
     /**
      * The tmdb id that will be used to search for metadata. Id from movie is used if available
      */
