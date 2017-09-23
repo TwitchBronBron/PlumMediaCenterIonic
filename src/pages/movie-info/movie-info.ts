@@ -27,5 +27,9 @@ export class MovieInfoPage {
             this.movie = movie;
         });
     }
+    ionViewDidEnter() {
+        //refresh this page anytime it is displayed
+        this.ionViewDidLoad();
+    }
     public movie: Movie;
 }
