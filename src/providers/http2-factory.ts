@@ -31,7 +31,7 @@ export class Http2 {
      */
     private request<T>(url: string, config: RequestOptions): Promise<T> {
         var requestConfig: RequestOptions = Object.assign({}, config, {
-            search: this.getParams(config.params),
+            params: this.getParams(config.params),
             method: config.method
         });
 
@@ -46,10 +46,13 @@ export class Http2 {
                 return response.json();
             }
         }, (response: Response) => {
+            var err;
             if (response.text()) {
-                var responseJson = response.json();
-                return Promise.reject(responseJson);
+                err = response.json();
+            } else {
+                err = new Error(response.statusText);
             }
+            return Promise.reject(err);
         });
     }
 
@@ -57,6 +60,12 @@ export class Http2 {
      * Get a URLSearchParams object based off of a javscript object
      */
     private getParams(params: any) {
+        if (!params) {
+            return undefined;
+        }
+        if (params instanceof URLSearchParams) {
+            return params;
+        }
         var result = new URLSearchParams();
         for (var i in params) {
             result.set(i, params[i]);
@@ -73,27 +82,30 @@ export class Http2 {
         return this.request<T>(url, cfg);
     }
 
-    public post<T>(url: string, body?: any, config?: RequestOptions): Promise<T> {
+    public post<T>(url: string, body?: any, params?: any, config?: RequestOptions): Promise<T> {
         var cfg = Object.assign({}, config, {
             method: 'POST',
-            body: body
+            body: body,
+            params: this.getParams(params)
         });
         return this.request<T>(url, cfg);
     }
 
-    public put<T>(url: string, body?: any, config?: RequestOptions): Promise<T> {
+    public put<T>(url: string, body?: any, params?: any, config?: RequestOptions): Promise<T> {
         var cfg = Object.assign({}, config, {
             method: 'PUT',
-            body: body
+            body: body,
+            params: this.getParams(params)
         });
 
         return this.request<T>(url, cfg);
     }
 
-    public delete<T>(url: string, body?: any, config?: RequestOptions): Promise<T> {
+    public delete<T>(url: string, body?: any, params?: any, config?: RequestOptions): Promise<T> {
         var cfg = Object.assign({}, config, {
             method: 'DELETE',
-            body: body
+            body: body,
+            params: this.getParams(params)
         });
         return this.request<T>(url, cfg);
     }

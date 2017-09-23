@@ -16,7 +16,7 @@ export class HomePage {
     ) {
 
     }
-    async ionViewDidEnter() {
+    async ionViewDidLoad() {
         this.movies = await this.api.movies.getAll();
     }
     public movies: Movie[];

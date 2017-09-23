@@ -39,6 +39,7 @@ import { InitializePage } from '../pages/initialize/initialize';
 import { Util } from '../providers/util';
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { FormsModule } from '@angular/forms';
+import { MediaItemProcessClick } from '../directives/media-item-process-click';
 
 @NgModule({
     declarations: [
@@ -69,6 +70,7 @@ import { FormsModule } from '@angular/forms';
         MoviePlayClick,
         ImageSwapperDirective,
         GoToPageClickDirective,
+        MediaItemProcessClick,
 
         //pipes
         ProperCaseSpacePipe

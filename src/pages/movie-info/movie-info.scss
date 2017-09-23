@@ -1,18 +1,13 @@
 page-movie-info {
-    .title-container {
-        position: absolute;
-        top: 5px;
-        left: 0;
-        width: 100%;
-        text-align:center;
-        .title {
-            text-align: center;
-            display: inline-block;
-            padding:10px;
-            margin:0;
-            font-size:3em;
-            text-shadow: 3px 3px #313131;
-        }
+    .title {
+        text-align: center;
+        padding: 10px;
+        margin: 0;
+        font-size: 3em;
+        text-shadow: 3px 3px #313131;
+    }
+    .various-info {
+        margin-bottom: 10px;
     }
     .backdrop {
         width: 75%;

@@ -59,6 +59,12 @@ export class Api {
         },
         getStatus: async () => {
             return await this.http2.get<LibraryGenerationStatus>('api/library/status');
+        },
+        /**
+         * Process an item by its media id. This can be any media type
+         */
+        process: async (mediaId: number) => {
+            return await this.http2.post('api/library/processItem', null, { mediaId });
         }
     }
 

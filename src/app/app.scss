@@ -58,6 +58,10 @@ img.backdrop-card {
     max-width: inherit;
 }
 
+*[relative] {
+    position: relative;
+}
+
 //line underneath text inputs
 .card-md .item-input .item-inner {
     border-bottom-color: #999;
