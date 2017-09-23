@@ -76,7 +76,7 @@ export class Http2 {
     public get<T>(url: string, params?: any, config?: RequestOptions): Promise<T> {
         var cfg = Object.assign({}, config, {
             method: 'GET',
-            params: params
+            params
         });
 
         return this.request<T>(url, cfg);
@@ -85,8 +85,8 @@ export class Http2 {
     public post<T>(url: string, body?: any, params?: any, config?: RequestOptions): Promise<T> {
         var cfg = Object.assign({}, config, {
             method: 'POST',
-            body: body,
-            params: this.getParams(params)
+            body,
+            params
         });
         return this.request<T>(url, cfg);
     }
@@ -94,8 +94,8 @@ export class Http2 {
     public put<T>(url: string, body?: any, params?: any, config?: RequestOptions): Promise<T> {
         var cfg = Object.assign({}, config, {
             method: 'PUT',
-            body: body,
-            params: this.getParams(params)
+            body,
+            params
         });
 
         return this.request<T>(url, cfg);
@@ -104,8 +104,8 @@ export class Http2 {
     public delete<T>(url: string, body?: any, params?: any, config?: RequestOptions): Promise<T> {
         var cfg = Object.assign({}, config, {
             method: 'DELETE',
-            body: body,
-            params: this.getParams(params)
+            body,
+            params
         });
         return this.request<T>(url, cfg);
     }

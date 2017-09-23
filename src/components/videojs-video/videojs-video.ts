@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import videojs from 'video.js';
+import { Config } from '../../config/config';
+import { Api } from '../../providers/api';
 
 @Component({
     selector: 'videojs-video',
@@ -7,13 +9,19 @@ import videojs from 'video.js';
 })
 export class VideojsVideoComponent {
     private static indexCounter = 1;
-    constructor() {
+    constructor(
+        private config: Config,
+        private api: Api
+    ) {
         this.id = 'video_' + VideojsVideoComponent.indexCounter++;
     }
     /**
      * The html id for the video element
      */
     public id: string;
+
+    @Input()
+    public mediaId: number;
 
     /**
      * The url to the video
@@ -30,15 +38,58 @@ export class VideojsVideoComponent {
     @Input()
     public autoplay: string;
 
+    private player;
     ngAfterViewInit() {
         var element = document.getElementById(this.id);
-        //var player = 
-        videojs(element, {
+        this.player = videojs(element, {
             poster: this.poster,
-            autoplay: this.autoplay
+            autoplay: this.autoplay,
         }, () => {
-
+            this.trackProgress();
         });
+    }
+
+    private progressIntervalHandler: any;
+    private trackProgress() {
+        //stop any previous interval
+        this.stopTrackProgress();
+        //create a new interval handler
+        var previousTime: number;
+        this.progressIntervalHandler = async () => {
+            //quit if the interval was canceled
+            if (!this.progressIntervalHandler) {
+                return;
+            }
+            var currentTime: number = this.player.currentTime();
+            //only update the progress if the progress has changed
+            if (currentTime !== previousTime) {
+                previousTime = currentTime;
+                try {
+                    //save the progress of this video
+                    await this.api.media.setProgress(this.mediaId, this.player.currentTime());
+                } catch (e) {
+                    //do nothing with server errors...nothing we can do about it
+                }
+            }
+        };
+
+        setInterval(this.progressIntervalHandler, this.config.saveMediaProgressInterval);
+    }
+
+    stopTrackProgress() {
+        if (this.progressIntervalHandler) {
+            clearInterval(this.progressIntervalHandler);
+        }
+        this.progressIntervalHandler = undefined;
+    }
+
+    ngOnDestroy() {
+        //destroy the video player if it was created
+        if (this.player) {
+            this.player.dispose();
+        }
+        //stop updating the server with the media progress
+        this.stopTrackProgress();
     }
 
 }

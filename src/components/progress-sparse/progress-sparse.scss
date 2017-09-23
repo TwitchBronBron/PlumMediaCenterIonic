@@ -1,0 +1,29 @@
+progress-sparse {
+    display: table;
+    display: inline-block;
+    width: 300px;
+    height: 20px;
+    .baseline-bar {
+        overflow: hidden;
+        position: relative;
+        min-width: 2px;
+        height: 100%;
+        background-color: lightgrey;
+    }
+    .inner-bar {
+        position: absolute;
+        height: 100%;
+        background-color: green;
+        z-index: 100000;
+    }
+    .min {
+        padding-right: 4px;
+        float: left;
+        text-align: right;
+    }
+    .max {
+        padding-left: 4px;
+        float: right;
+        text-align: left;
+    }
+}

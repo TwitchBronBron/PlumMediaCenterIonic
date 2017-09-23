@@ -40,6 +40,10 @@ import { Util } from '../providers/util';
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 import { FormsModule } from '@angular/forms';
 import { MediaItemProcessClick } from '../directives/media-item-process-click';
+import { AccountPage } from '../pages/account/account';
+import { HistoryPage } from '../pages/history/history';
+import { ProgressSparseComponent } from '../components/progress-sparse/progress-sparse';
+import { DeviceSizeIfDirective } from '../directives/device-size-if';
 
 @NgModule({
     declarations: [
@@ -47,7 +51,9 @@ import { MediaItemProcessClick } from '../directives/media-item-process-click';
 
         //pages
         AdminPage,
+        AccountPage,
         HomePage,
+        HistoryPage,
         MovieInfoPage,
         MovieMetadataPage,
         MoviePlayPage,
@@ -59,12 +65,14 @@ import { MediaItemProcessClick } from '../directives/media-item-process-click';
         MovieCardComponent,
         MetadataCompareRowComponent,
         ImageListComponent,
+        ProgressSparseComponent,
         StringListComponent,
         VideojsVideoComponent,
         SaveIconComponent,
         ProgressBarComponent,
 
         //directives
+        DeviceSizeIfDirective,
         MovieInfoClick,
         MovieMetadataClick,
         MoviePlayClick,
@@ -86,6 +94,8 @@ import { MediaItemProcessClick } from '../directives/media-item-process-click';
         MyApp,
         HomePage,
         AdminPage,
+        AccountPage,
+        HistoryPage,
         MovieInfoPage,
         MovieMetadataPage,
         MoviePlayPage,

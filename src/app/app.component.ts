@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { AdminPage } from '../pages/admin/admin';
 import { Api } from '../providers/api';
 import { InitializePage } from '../pages/initialize/initialize';
+import { AccountPage } from '../pages/account/account';
 
 @Component({
     templateUrl: 'app.html'
@@ -28,7 +29,8 @@ export class MyApp {
         // used for an example of ngFor and navigation
         this.pages = [
             { title: 'Home', component: HomePage },
-            { title: 'Admin', component: AdminPage }
+            { title: 'Admin', component: AdminPage },
+            { title: 'Accout', component: AccountPage }
         ]; 
     }
 

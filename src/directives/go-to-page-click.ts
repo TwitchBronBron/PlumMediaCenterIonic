@@ -1,6 +1,7 @@
 import { Directive, Input, ElementRef, HostListener } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SourcesPage } from '../pages/sources/sources';
+import { HistoryPage } from '../pages/history/history';
 
 @Directive({ selector: '[goToPageClick]' })
 export class GoToPageClickDirective {
@@ -9,7 +10,8 @@ export class GoToPageClickDirective {
     }
 
     private pages = {
-        'Sources': SourcesPage
+        'Sources': SourcesPage,
+        "History": HistoryPage
     }
 
     private pageName: string;

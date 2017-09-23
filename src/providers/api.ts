@@ -7,6 +7,8 @@ import { MovieMetadataSearchResult } from '../interfaces/movie-metadata-search-r
 import { LibraryGenerationStatus } from '../interfaces/library-generation-status';
 import { Source } from '../interfaces/source';
 import { MediaType } from '../interfaces/media-type';
+import { MediaProgress } from '../interfaces/media-progress';
+import { MediaHistoryRecord } from '../interfaces/media-history-record';
 
 @Injectable()
 export class Api {
@@ -49,6 +51,27 @@ export class Api {
             return await this.http2.get<MediaType[]>('api/media/mediaTypes');
         }
     }
+
+    public media = {
+        /**
+         * Set the current progress of a media item (i.e. the number of seconds into the item the user is)
+         */
+        setProgress: async (mediaId: number, seconds: number) => {
+            return await this.http2.post<MediaProgress>('api/media/progress', { mediaId, seconds });
+        },
+        /**
+         * Get a list of progress items
+         */
+        getHistory: async (index = 0, limit = 50) => {
+            return await this.http2.get<MediaHistoryRecord[]>('api/media/history', { index, limit });
+        },
+        /**
+         * Get the latest progress for the specified media item
+         */
+        getCurrentProgress: async (mediaId: number) => {
+            return await this.http2.get<MediaProgress>('api/media/currentProgress');
+        }
+    };
 
     public library = {
         /**
