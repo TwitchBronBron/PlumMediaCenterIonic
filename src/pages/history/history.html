@@ -11,11 +11,13 @@
     <div style="max-width:800px;margin: 0 auto;">
         <ion-card *ngFor="let record of historyRecords">
             <ion-card-content>
-                <img [src]="record.posterUrl" />
+                <img class="pointer" [src]="record.posterUrl" [mediaInfoClick]="record"/>
                 <div class="right-area">
                     <ion-grid>
                         <ion-row>
-                            <h2>{{record.title}}</h2>
+                            <h2>
+                                <a class="pointer" [mediaInfoClick]="record">{{record.title}}</a>
+                            </h2>
                         </ion-row>
                         <ion-row>
                             <ion-col col-12 col-sm-6>

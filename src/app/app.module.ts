@@ -44,6 +44,7 @@ import { AccountPage } from '../pages/account/account';
 import { HistoryPage } from '../pages/history/history';
 import { ProgressSparseComponent } from '../components/progress-sparse/progress-sparse';
 import { DeviceSizeIfDirective } from '../directives/device-size-if';
+import { MediaInfoClick } from '../directives/media-info-click';
 
 @NgModule({
     declarations: [
@@ -74,6 +75,7 @@ import { DeviceSizeIfDirective } from '../directives/device-size-if';
         //directives
         DeviceSizeIfDirective,
         MovieInfoClick,
+        MediaInfoClick,
         MovieMetadataClick,
         MoviePlayClick,
         ImageSwapperDirective,

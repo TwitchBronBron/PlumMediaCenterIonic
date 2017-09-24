@@ -70,6 +70,12 @@ export class Api {
          */
         getCurrentProgress: async (mediaId: number) => {
             return await this.http2.get<MediaProgress>('api/media/currentProgress');
+        },
+        /**
+         * Get a media item by its id. Call this when you don't know what type of media id you have (movie, episode, etc...)
+         */
+        getItem: async (mediaId: number) => {
+            return await this.http2.get<Movie>('api/media/item', { mediaId });
         }
     };
 

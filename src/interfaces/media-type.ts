@@ -1,5 +1,7 @@
+import { MediaTypeId } from "../enums/media-type-id";
+
 export interface MediaType {
-    id: number;
+    id: MediaTypeId;
     name: string;
 }
 
