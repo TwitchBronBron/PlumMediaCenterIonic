@@ -20,7 +20,7 @@ export class MediaItemProcessClick {
     private _mediaId: number;
 
     @Input("mediaItemProcessClick")
-    public set mediaId(value: number | { id: number }) {
+    public set mediaItemId(value: number | { id: number }) {
         if (typeof value === 'object') {
             this._mediaId = value.id;
         } else {

@@ -9,6 +9,7 @@
 
 <ion-content padding text-center>
     <div style="max-width:800px;margin: 0 auto;">
+        <p *ngIf="historyRecords?.length === 0">You haven't watched anything yet! You should fix that. ;)</p>
         <ion-card *ngFor="let record of historyRecords">
             <ion-card-content>
                 <img class="pointer" [src]="record.posterUrl" [mediaInfoClick]="record" />

@@ -16,13 +16,13 @@ export class MediaInfoClick {
     }
 
     @Input("mediaInfoClick")
-    public set mediaId(value: number | { id?: number, mediaId?: number }) {
+    public set mediaItemId(value: number | { id?: number, mediaItemId?: number }) {
         if (typeof value === 'number') {
             this._mediaId = value;
         } else if (value.id) {
             this._mediaId = value.id;
-        } else if (value.mediaId) {
-            this._mediaId = value.mediaId;
+        } else if (value.mediaItemId) {
+            this._mediaId = value.mediaItemId;
         }
     }
     private _mediaId: number;

@@ -10,7 +10,7 @@ export interface MediaHistoryRecord {
     totalProgressMinutes: number;
     id: number;
     profileId: number;
-    mediaId: number;
+    mediaItemId: number;
     dateBegin: string;
     dateEnd: string;
 }

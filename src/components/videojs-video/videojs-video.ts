@@ -21,7 +21,7 @@ export class VideojsVideoComponent {
     public id: string;
 
     @Input()
-    public mediaId: number;
+    public mediaItemId: number;
 
     /**
      * The url to the video
@@ -66,7 +66,7 @@ export class VideojsVideoComponent {
                 previousTime = currentTime;
                 try {
                     //save the progress of this video
-                    await this.api.media.setProgress(this.mediaId, this.player.currentTime());
+                    await this.api.media.setProgress(this.mediaItemId, this.player.currentTime());
                 } catch (e) {
                     //do nothing with server errors...nothing we can do about it
                 }

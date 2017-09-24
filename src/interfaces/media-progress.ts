@@ -1,7 +1,7 @@
 export interface MediaProgress {
     id: number;
     profileId: number;
-    mediaId: number;
+    mediaItemId: number;
     progressSecondsBegin: number;
     progressSecondsEnd: number;
     dateBegin: string;

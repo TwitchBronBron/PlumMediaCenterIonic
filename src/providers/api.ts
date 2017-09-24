@@ -56,8 +56,8 @@ export class Api {
         /**
          * Set the current progress of a media item (i.e. the number of seconds into the item the user is)
          */
-        setProgress: async (mediaId: number, seconds: number) => {
-            return await this.http2.post<MediaProgress>('api/media/progress', { mediaId, seconds });
+        setProgress: async (mediaItemId: number, seconds: number) => {
+            return await this.http2.post<MediaProgress>('api/media/progress', { mediaItemId, seconds });
         },
         /**
          * Get a list of progress items
@@ -68,14 +68,14 @@ export class Api {
         /**
          * Get the latest progress for the specified media item
          */
-        getCurrentProgress: async (mediaId: number) => {
+        getCurrentProgress: async (mediaItemId: number) => {
             return await this.http2.get<MediaProgress>('api/media/currentProgress');
         },
         /**
          * Get a media item by its id. Call this when you don't know what type of media id you have (movie, episode, etc...)
          */
-        getItem: async (mediaId: number) => {
-            return await this.http2.get<Movie>('api/media/item', { mediaId });
+        getItem: async (mediaItemId: number) => {
+            return await this.http2.get<Movie>('api/media/item', { mediaItemId });
         },
 
         /**
@@ -99,8 +99,8 @@ export class Api {
         /**
          * Process an item by its media id. This can be any media type
          */
-        process: async (mediaId: number) => {
-            return await this.http2.post('api/library/processItem', null, { mediaId });
+        process: async (mediaItemId: number) => {
+            return await this.http2.post('api/library/processItem', null, { mediaItemId });
         }
     }
 
