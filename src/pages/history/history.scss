@@ -13,8 +13,14 @@ page-history {
         overflow: hidden;
         padding: 10px;
         text-align: left;
+        position: relative;
     }
     .card-md h2 {
         color: white;
+    }
+    .delete-button {
+        position: absolute;
+        top: 0px;
+        right: 0px;
     }
 }

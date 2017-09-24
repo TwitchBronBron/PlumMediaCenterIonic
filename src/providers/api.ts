@@ -76,6 +76,13 @@ export class Api {
          */
         getItem: async (mediaId: number) => {
             return await this.http2.get<Movie>('api/media/item', { mediaId });
+        },
+
+        /**
+         * Delete a history record
+         */
+        deleteHistoryRecord: async (id: number) => {
+            return await this.http2.delete('api/media/history', null, { id });
         }
     };
 

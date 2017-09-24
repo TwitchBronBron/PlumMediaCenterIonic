@@ -6,6 +6,7 @@ import { Alerter } from "../../providers/alerter";
 import { MediaProgress } from "../../interfaces/media-progress";
 import { Config } from "../../config/config";
 import { MediaHistoryRecord } from "../../interfaces/media-history-record";
+import { Loader } from "../../providers/loader";
 
 @Component({
     selector: 'page-history',
@@ -17,7 +18,8 @@ export class HistoryPage {
         public api: Api,
         public config: Config,
         private util: Util,
-        private alerter: Alerter
+        private alerter: Alerter,
+        private loader: Loader
     ) {
 
     }
@@ -41,5 +43,21 @@ export class HistoryPage {
         this.index += this.size;
         //append items to the end of the list
         this.historyRecords.push.apply(this.historyRecords, more);
+    }
+
+    public async deleteHistoryRecord(record: MediaHistoryRecord) {
+        var hide = () => { };
+        try {
+            if (await this.alerter.confirm('Are you sure you want to delete this history record')) {
+                hide = this.loader.show('Deleting history record');
+                await this.api.media.deleteHistoryRecord(record.id);
+                //remove the item from the list
+                this.historyRecords.splice(this.historyRecords.indexOf(record), 1);
+            }
+        } catch (e) {
+            this.alerter.alert('There was an error deleting history record: ' + JSON.stringify(e));
+        } finally {
+            hide();
+        }
     }
 }

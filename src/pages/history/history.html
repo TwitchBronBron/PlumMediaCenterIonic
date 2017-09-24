@@ -11,8 +11,11 @@
     <div style="max-width:800px;margin: 0 auto;">
         <ion-card *ngFor="let record of historyRecords">
             <ion-card-content>
-                <img class="pointer" [src]="record.posterUrl" [mediaInfoClick]="record"/>
+                <img class="pointer" [src]="record.posterUrl" [mediaInfoClick]="record" />
                 <div class="right-area">
+                    <button ion-button small class="delete-button" color="danger" (click)="deleteHistoryRecord(record)">
+                        <ion-icon name="close"></ion-icon>
+                    </button>
                     <ion-grid>
                         <ion-row>
                             <h1>
