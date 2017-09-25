@@ -14,12 +14,17 @@ export class MoviePlayPage {
         public navParams: NavParams,
         public api: Api
     ) {
-        var movieId = this.navParams.data.movieId;
-        this.api.movies.getById(movieId).then((movie) => {
-            this.movie = movie;
-        });
+
     }
     public movie: Movie;
+    public resumeSeconds: number;
+    async ionViewDidLoad() {
+        var movieId = this.navParams.data.movieId;
+        var movie = await this.api.movies.getById(movieId);
+        //get the current movie progress
+        this.resumeSeconds = await this.api.mediaItems.getResumeSeconds(movieId);
+        this.movie = movie;
 
 
+    }
 }

@@ -25,7 +25,7 @@ export class SourcesPage {
     }
     private async init() {
         this.sources = await this.api.sources.getAll();
-        this.mediaTypes = await this.api.mediaType.getAll();
+        this.mediaTypes = await this.api.mediaTypes.getAll();
     }
 
     public mediaTypes: MediaType[];

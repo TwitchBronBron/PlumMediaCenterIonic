@@ -14,7 +14,7 @@
             <ng-container inline-block v-center *ngIf="movie.releaseDate">{{movie.releaseDate | date:'y'}} </ng-container>
             <ng-container inline-block v-center *ngIf="!movie.releaseDate">Release date unknown</ng-container>
             <ion-badge v-center>{{movie.rating ? movie.rating : 'Rating unknown'}}</ion-badge>
-            {{movie.runtime ? movie.runtime + ' minutes' : 'Runtime unknown'}}
+            {{movie.RuntimeSeconds ? Math.ceil(movie.RuntimeSeconds/60) + ' minutes' : 'Runtime unknown'}}
         </div>
         <div class="backdrop-container">
             <div class="vignette-left"></div>

@@ -12,7 +12,7 @@
         <p *ngIf="historyRecords?.length === 0">You haven't watched anything yet! You should fix that. ;)</p>
         <ion-card *ngFor="let record of historyRecords">
             <ion-card-content>
-                <img class="pointer" [src]="record.posterUrl" [mediaInfoClick]="record" />
+                <img class="pointer" [src]="record.posterUrl" [mediaInfoClick]="record.mediaItemId" />
                 <div class="right-area">
                     <button ion-button small class="delete-button" color="danger" (click)="deleteHistoryRecord(record)">
                         <ion-icon name="close"></ion-icon>
@@ -20,7 +20,7 @@
                     <ion-grid>
                         <ion-row>
                             <h1>
-                                <a class="pointer" [mediaInfoClick]="record">{{record.title}}</a>
+                                <a class="pointer" [mediaInfoClick]="record.mediaItemId">{{record.title}}</a>
                             </h1>
                         </ion-row>
                         <ion-row>
@@ -30,12 +30,12 @@
                             </ion-col>
                             <ion-col col-12 col-sm-6>
                                 <b>Minutes Watched: </b>
-                                <span>{{record.totalProgressMinutes}}</span>
+                                <span>{{Math.ceil(record.totalProgressSeconds/60)}}</span>
                             </ion-col>
                         </ion-row>
                         <ion-row>
-                            <progress-sparse style="width: 100%" unit="min" [min]="0" [max]="record.runtimeMinutes" [lower]="record.progressMinutesBegin"
-                                [upper]="record.progressMinutesEnd"></progress-sparse>
+                            <progress-sparse style="width: 100%" unit="min" [min]="0" [max]="Math.ceil(record.runtimeSeconds / 60)" [lower]="Math.floor(record.progressSecondsEnd/60)"
+                                [upper]="Math.ceil(record.progressSecondsEnd/60)"></progress-sparse>
                         </ion-row>
                     </ion-grid>
                 </div>

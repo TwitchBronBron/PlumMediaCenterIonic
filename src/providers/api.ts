@@ -8,7 +8,7 @@ import { LibraryGenerationStatus } from '../interfaces/library-generation-status
 import { Source } from '../interfaces/source';
 import { MediaType } from '../interfaces/media-type';
 import { MediaProgress } from '../interfaces/media-progress';
-import { MediaHistoryRecord } from '../interfaces/media-history-record';
+import { MediaItemHistoryRecord } from '../interfaces/media-item-history-record';
 
 @Injectable()
 export class Api {
@@ -43,48 +43,57 @@ export class Api {
             return await this.http2.post(`api/metadata/movies/${movieId}`, metadata);
         }
     }
-    public mediaType = {
+    public mediaTypes = {
         /**
          * Get a list of all possible media types
          */
         getAll: async () => {
-            return await this.http2.get<MediaType[]>('api/media/mediaTypes');
+            return await this.http2.get<MediaType[]>('api/mediaTypes');
         }
     }
 
-    public media = {
+    public mediaItems = {
+        /**
+         * Get history records for all media items
+         */
+        getAllHistory: async (limit?: number, index?: number) => {
+            return await this.http2.get<MediaItemHistoryRecord[]>('api/mediaItems/history', { index, limit });
+        },
+        /**
+         * Get history records for a single media item.
+         */
+        getHistory: async (mediaItemId: number, limit?: number, index?: number) => {
+            return await this.http2.get<MediaItemHistoryRecord[]>(`api/mediaItems/${mediaItemId}/history`);
+        },
+
+        /**
+         * Delete a history record by its id
+         */
+        deleteHistoryById: async (id: number) => {
+            return await this.http2.delete(`api/mediaItems/history/${id}`);
+        },
         /**
          * Set the current progress of a media item (i.e. the number of seconds into the item the user is)
          */
         setProgress: async (mediaItemId: number, seconds: number) => {
-            return await this.http2.post<MediaProgress>('api/media/progress', { mediaItemId, seconds });
+            return await this.http2.post<MediaProgress>(`api/mediaItems/${mediaItemId}/progress`, { seconds });
         },
         /**
-         * Get a list of progress items
+         * Get the latest history record for the media item
          */
-        getHistory: async (index = 0, limit = 50) => {
-            return await this.http2.get<MediaHistoryRecord[]>('api/media/history', { index, limit });
-        },
-        /**
-         * Get the latest progress for the specified media item
-         */
-        getCurrentProgress: async (mediaItemId: number) => {
-            return await this.http2.get<MediaProgress>('api/media/currentProgress');
+        getProgress: async (mediaItemId: number) => {
+            return this.mediaItems.getHistory(mediaItemId, 1);
         },
         /**
          * Get a media item by its id. Call this when you don't know what type of media id you have (movie, episode, etc...)
          */
-        getItem: async (mediaItemId: number) => {
-            return await this.http2.get<Movie>('api/media/item', { mediaItemId });
+        getMediaItem: async (mediaItemId: number) => {
+            return await this.http2.get<Movie>(`api/mediaItems/${mediaItemId}`);
         },
-
-        /**
-         * Delete a history record
-         */
-        deleteHistoryRecord: async (id: number) => {
-            return await this.http2.delete('api/media/history', null, { id });
+        getResumeSeconds: async (mediaItemId: number) => {
+            return await this.http2.get<number>(`api/mediaItems/${mediaItemId}/resumeSeconds`);
         }
-    };
+    }
 
     public library = {
         /**

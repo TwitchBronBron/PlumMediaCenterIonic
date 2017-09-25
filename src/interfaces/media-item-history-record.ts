@@ -1,13 +1,13 @@
 import { MediaTypeId } from "../enums/media-type-id";
 
-export interface MediaHistoryRecord {
+export interface MediaItemHistoryRecord {
     mediaTypeId: MediaTypeId;
     posterUrl: string;
     title: string;
-    runtimeMinutes: number;
-    progressMinutesBegin: number;
-    progressMinutesEnd: number;
-    totalProgressMinutes: number;
+    runtimeSeconds: number;
+    progressSecondsBegin: number;
+    progressSecondsEnd: number;
+    totalProgressSeconds: number;
     id: number;
     profileId: number;
     mediaItemId: number;

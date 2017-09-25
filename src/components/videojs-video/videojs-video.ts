@@ -38,6 +38,16 @@ export class VideojsVideoComponent {
     @Input()
     public autoplay: string;
 
+    @Input()
+    public set seconds(value: number) {
+        this._seconds = value;
+        //make the player seek if it's ready. If it's not ready, it will do this itself on initialize
+        if (this.player) {
+            this.player.currentTime(this._seconds);
+        }
+    }
+    private _seconds: number;
+
     private player;
     ngAfterViewInit() {
         var element = document.getElementById(this.id);
@@ -45,6 +55,10 @@ export class VideojsVideoComponent {
             poster: this.poster,
             autoplay: this.autoplay,
         }, () => {
+            if (this._seconds) {
+                this.player.currentTime(this._seconds);
+            }
+            this.player.play();
             this.trackProgress();
         });
     }
@@ -66,7 +80,7 @@ export class VideojsVideoComponent {
                 previousTime = currentTime;
                 try {
                     //save the progress of this video
-                    await this.api.media.setProgress(this.mediaItemId, this.player.currentTime());
+                    await this.api.mediaItems.setProgress(this.mediaItemId, this.player.currentTime());
                 } catch (e) {
                     //do nothing with server errors...nothing we can do about it
                 }

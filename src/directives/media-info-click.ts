@@ -16,29 +16,20 @@ export class MediaInfoClick {
     }
 
     @Input("mediaInfoClick")
-    public set mediaItemId(value: number | { id?: number, mediaItemId?: number }) {
-        if (typeof value === 'number') {
-            this._mediaId = value;
-        } else if (value.id) {
-            this._mediaId = value.id;
-        } else if (value.mediaItemId) {
-            this._mediaId = value.mediaItemId;
-        }
-    }
-    private _mediaId: number;
+    public mediaItemId: number;
 
     @HostListener("click")
     async click() {
-        if (!this._mediaId) {
+        if (!this.mediaItemId) {
             throw new Error("mediaInfoClick: value cannot be null or undefined");
         }
         var hide = this.loader.show('Loading');
         try {
-            var mediaItem = await this.api.media.getItem(this._mediaId);
+            var mediaItem = await this.api.mediaItems.getMediaItem(this.mediaItemId);
 
             switch (mediaItem.mediaTypeId) {
                 case MediaTypeId.movie:
-                    this.navCtrl.push(MovieInfoPage, { movieId: this._mediaId });
+                    this.navCtrl.push(MovieInfoPage, { movieId: this.mediaItemId });
                     break;
                 default:
                     throw new Error('Not implemented');

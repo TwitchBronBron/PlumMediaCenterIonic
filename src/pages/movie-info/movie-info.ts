@@ -8,7 +8,7 @@ import { Movie } from '../../interfaces/movie';
     templateUrl: 'movie-info.html'
 })
 export class MovieInfoPage {
-
+    public Math = Math;
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,

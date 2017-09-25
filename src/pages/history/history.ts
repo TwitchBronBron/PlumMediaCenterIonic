@@ -5,7 +5,7 @@ import { Util } from "../../providers/util";
 import { Alerter } from "../../providers/alerter";
 import { MediaProgress } from "../../interfaces/media-progress";
 import { Config } from "../../config/config";
-import { MediaHistoryRecord } from "../../interfaces/media-history-record";
+import { MediaItemHistoryRecord } from "../../interfaces/media-item-history-record";
 import { Loader } from "../../providers/loader";
 
 @Component({
@@ -21,8 +21,8 @@ export class HistoryPage {
         private alerter: Alerter,
         private loader: Loader
     ) {
-
     }
+    public Math = Math;
 
     ionViewDidLoad() {
         this.index = 0;
@@ -36,21 +36,21 @@ export class HistoryPage {
     private index: number;
     private size: number;
     public posterFolderUrl: string;
-    public historyRecords: MediaHistoryRecord[];
+    public historyRecords: MediaItemHistoryRecord[];
 
     public async loadMore() {
-        var more = await this.api.media.getHistory(this.index, this.size);
+        var more = await this.api.mediaItems.getAllHistory(this.size, this.index);
         this.index += this.size;
         //append items to the end of the list
         this.historyRecords.push.apply(this.historyRecords, more);
     }
 
-    public async deleteHistoryRecord(record: MediaHistoryRecord) {
+    public async deleteHistoryRecord(record: MediaItemHistoryRecord) {
         var hide = () => { };
         try {
             if (await this.alerter.confirm('Are you sure you want to delete this history record')) {
                 hide = this.loader.show('Deleting history record');
-                await this.api.media.deleteHistoryRecord(record.id);
+                await this.api.mediaItems.deleteHistoryById(record.id);
                 //remove the item from the list
                 this.historyRecords.splice(this.historyRecords.indexOf(record), 1);
             }
