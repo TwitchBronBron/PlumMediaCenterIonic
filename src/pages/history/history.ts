@@ -1,9 +1,7 @@
 import { Component } from "@angular/core";
 import { NavController } from "ionic-angular";
 import { Api } from "../../providers/api";
-import { Util } from "../../providers/util";
 import { Alerter } from "../../providers/alerter";
-import { MediaProgress } from "../../interfaces/media-progress";
 import { Config } from "../../config/config";
 import { MediaItemHistoryRecord } from "../../interfaces/media-item-history-record";
 import { Loader } from "../../providers/loader";
@@ -17,7 +15,6 @@ export class HistoryPage {
         public navCtrl: NavController,
         public api: Api,
         public config: Config,
-        private util: Util,
         private alerter: Alerter,
         private loader: Loader
     ) {

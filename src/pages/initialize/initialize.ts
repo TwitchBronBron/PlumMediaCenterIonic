@@ -5,7 +5,6 @@ import { Loader } from '../../providers/loader';
 import { Alerter } from '../../providers/alerter';
 import { InstallDatabasePage } from '../install-database/install-database';
 import { HomePage } from '../home/home';
-import { HistoryPage } from '../history/history';
 
 @Component({
     selector: 'page-initialize',
@@ -31,7 +30,7 @@ export class InitializePage {
         if (!isInstalled) {
             this.navCtrl.setRoot(InstallDatabasePage);
         } else {
-            this.navCtrl.setRoot(HistoryPage);
+            this.navCtrl.setRoot(HomePage);
         }
     }
 

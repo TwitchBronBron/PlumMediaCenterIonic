@@ -1,6 +1,4 @@
 import { Directive, Input, HostListener } from '@angular/core';
-import { Movie } from '../interfaces/movie';
-import { MovieMetadataPage } from '../pages/movie-metadata/movie-metadata';
 import { Api } from '../providers/api';
 import { Alerter } from '../providers/alerter';
 import { Loader } from '../providers/loader';
@@ -35,7 +33,7 @@ export class MediaItemProcessClick {
         }
         var hide = this.loader.show('Processing item');
         try {
-            var result = await this.api.library.process(this._mediaId);
+            await this.api.library.process(this._mediaId);
             hide();
             await this.alerter.alert('Processing finished');
         } catch (e) {

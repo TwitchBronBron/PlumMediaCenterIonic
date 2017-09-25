@@ -90,8 +90,19 @@ export class Api {
         getMediaItem: async (mediaItemId: number) => {
             return await this.http2.get<Movie>(`api/mediaItems/${mediaItemId}`);
         },
+        /**
+         * Get the number of seconds that the item should resume at. Usually this is because the user stopped the mediaItem sometime before finishing it.
+         * Example: user stops movie, goes to bed. Starts to watch movie again in the morning. This method would let the player know the second
+         * to resume at.
+         */
         getResumeSeconds: async (mediaItemId: number) => {
             return await this.http2.get<number>(`api/mediaItems/${mediaItemId}/resumeSeconds`);
+        },
+        /**
+         * Get a list of search results based on a search string
+         */
+        getSearchResults: async (searchText: string) => {
+            return await this.http2.get<any[]>(`api/mediaItems`, { q: searchText });
         }
     }
 

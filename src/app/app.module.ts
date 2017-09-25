@@ -45,6 +45,8 @@ import { HistoryPage } from '../pages/history/history';
 import { ProgressSparseComponent } from '../components/progress-sparse/progress-sparse';
 import { DeviceSizeIfDirective } from '../directives/device-size-if';
 import { MediaInfoClick } from '../directives/media-info-click';
+import { SearchResultsPage } from '../pages/search-results/search-results';
+import { SearchInputComponent } from '../components/search-input/search-input';
 
 @NgModule({
     declarations: [
@@ -58,6 +60,7 @@ import { MediaInfoClick } from '../directives/media-info-click';
         MovieInfoPage,
         MovieMetadataPage,
         MoviePlayPage,
+        SearchResultsPage,
         SourcesPage,
         InstallDatabasePage,
         InitializePage,
@@ -70,6 +73,7 @@ import { MediaInfoClick } from '../directives/media-info-click';
         StringListComponent,
         VideojsVideoComponent,
         SaveIconComponent,
+        SearchInputComponent,
         ProgressBarComponent,
 
         //directives
@@ -101,6 +105,7 @@ import { MediaInfoClick } from '../directives/media-info-click';
         MovieInfoPage,
         MovieMetadataPage,
         MoviePlayPage,
+        SearchResultsPage,
         SourcesPage,
         InstallDatabasePage,
         InitializePage
