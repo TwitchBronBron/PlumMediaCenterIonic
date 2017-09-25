@@ -37,6 +37,14 @@ export class HistoryPage {
 
     public async loadMore() {
         var more = await this.api.mediaItems.getAllHistory(this.size, this.index);
+        //calculate some numbers for each item
+        for (var i = 0; i < more.length; i++) {
+            var record = more[i];
+            (record as any).minutesWatched = Math.ceil(record.progressSecondsEnd / 60) - Math.floor(record.progressSecondsBegin / 60);
+            (record as any).runtimeMinutes = Math.ceil(record.runtimeSeconds / 60);
+            (record as any).progressMinutesBegin = Math.floor(record.progressSecondsBegin / 60);
+            (record as any).progressMinutesEnd = Math.ceil(record.progressSecondsEnd / 60);
+        }
         this.index += this.size;
         //append items to the end of the list
         this.historyRecords.push.apply(this.historyRecords, more);

@@ -30,12 +30,12 @@
                             </ion-col>
                             <ion-col col-12 col-sm-6>
                                 <b>Minutes Watched: </b>
-                                <span>{{Math.ceil(record.totalProgressSeconds/60)}}</span>
+                                <span>{{record.minutesWatched}}</span>
                             </ion-col>
                         </ion-row>
                         <ion-row>
-                            <progress-sparse style="width: 100%" unit="min" [min]="0" [max]="Math.ceil(record.runtimeSeconds / 60)" [lower]="Math.floor(record.progressSecondsEnd/60)"
-                                [upper]="Math.ceil(record.progressSecondsEnd/60)"></progress-sparse>
+                            <progress-sparse style="width: 100%" unit="min" [min]="0" [max]="record.runtimeMinutes" [lower]="record.progressMinutesBegin"
+                                [upper]="record.progressMinutesEnd"></progress-sparse>
                         </ion-row>
                     </ion-grid>
                 </div>
